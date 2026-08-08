@@ -56,7 +56,7 @@ def _bench_v3(brief: str, seeds: list[int]) -> BenchmarkResult:
     from ..v3.pipeline import run_pipeline
 
     t0 = time.monotonic()
-    result = run_pipeline(brief=brief, seeds=seeds)
+    result = run_pipeline(brief=brief, n_seeds=len(seeds))
     elapsed = time.monotonic() - t0
 
     survivors = result.get("survivors", [])
