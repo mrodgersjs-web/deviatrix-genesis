@@ -495,10 +495,40 @@ class TestPipelineSmoke(unittest.TestCase):
             "memory_ids_written": [],
             "telemetry_events": 10,
             "wall_clock_s": 1.5,
+            "quality": {"total_expeditions": 9, "pass_rate_pct": 88.9, "wall_breaches": 0,
+                        "avg_diamond_ms": 100.0, "z_mean": 5.0, "z_median": 4.5,
+                        "z_stdev": 2.0, "z_min": -2.0, "z_max": 12.0},
         }
         report = render_v5_report(result)
         self.assertIn("test", report)
         self.assertIn("idea1", report)
+        self.assertIn("Quality Metrics", report)
+
+    def test_pipeline_empty_brief(self):
+        """Pipeline handles empty brief gracefully."""
+        from deviatrix_genesis.v5.pipeline import run_v5_pipeline
+
+        result = run_v5_pipeline(brief="", n_ideas=2, max_rounds=1, seeds=[2026])
+        self.assertIn("survivors", result)
+        self.assertGreaterEqual(result["n_rounds"], 1)
+
+    def test_pipeline_single_seed(self):
+        """Pipeline works with a single seed."""
+        from deviatrix_genesis.v5.pipeline import run_v5_pipeline
+
+        result = run_v5_pipeline(brief="test", n_ideas=2, max_rounds=1, seeds=[42])
+        self.assertIn("survivors", result)
+
+    def test_pipeline_quality_metrics_present(self):
+        """Quality metrics are always present in result."""
+        from deviatrix_genesis.v5.pipeline import run_v5_pipeline
+
+        result = run_v5_pipeline(brief="test", n_ideas=2, max_rounds=1, seeds=[2026])
+        self.assertIn("quality", result)
+        q = result["quality"]
+        self.assertIn("pass_rate_pct", q)
+        self.assertIn("z_mean", q)
+        self.assertIn("total_expeditions", q)
 
 
 class TestMultiBrief(unittest.TestCase):
