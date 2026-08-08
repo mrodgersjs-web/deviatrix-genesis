@@ -234,10 +234,11 @@ def run_v5_pipeline(
 
     # ── load substrate ──────────────────────────────────────────────
     from ..v3.corpus_loader import load_corpus
-    from ..v3.proposer import propose_from_brief
+    from ..v3.proposer import propose_from_brief, GTMIdea
     from ..v3.collision import fuse_survivors
     from ..verifier import IndependentVerifier
     from ..v4.embeddings import build_embedding_index, score_with_embeddings
+    from ..v4.formula_emitter import emit_formulas
 
     corpus = load_corpus()
     bus.emit("corpus_loaded", "pipeline", count=len(corpus))
@@ -262,21 +263,46 @@ def run_v5_pipeline(
     for round_num in range(1, max_rounds + 1):
         bus.emit("round_start", "pipeline", round=round_num)
 
-        # Propose ideas from brief, then score with embeddings
-        ideas = propose_from_brief(brief, corpus=corpus, n=n_ideas)
+        # Build corpus_newness from survivors for feedback to emitter
+        corpus_newness: dict[str, tuple[float, float, float]] | None = None
+        if all_survivors:
+            corpus_newness = {}
+            for s in all_survivors:
+                name = s.get("name", "")
+                corpus_newness[name] = (
+                    s.get("anti_orthodoxy_new", s.get("composite_z", 0.0)),
+                    s.get("mechanism_originality_new", 0.0),
+                    s.get("prior_art_distance_new", 0.0),
+                )
 
-        # Score each idea's newness via cosine similarity (not Jaccard)
-        for idea in ideas:
-            idea_text = f"{idea.name} {idea.formula}"
+        # Emit formulas from brief (with survivor feedback in round 2+)
+        emitted = emit_formulas(brief, n=n_ideas, corpus_newness=corpus_newness)
+
+        # Convert to GTMIdea for the conductor + score with embeddings
+        ideas: list[GTMIdea] = []
+        for ef in emitted:
+            idea_text = f"{ef.name} {ef.formula}"
             scores = score_with_embeddings(idea_text, embedding_index)
-            idea.anti_orthodoxy_new = scores.anti_orthodoxy
-            idea.mechanism_originality_new = scores.mechanism_originality
-            idea.prior_art_distance_new = scores.prior_art_distance
+            idea = GTMIdea(
+                name=ef.name,
+                formula=ef.formula,
+                falsifier=ef.falsifier,
+                closest_known_archetype=None,
+                anti_orthodoxy_new=scores.anti_orthodoxy,
+                mechanism_originality_new=scores.mechanism_originality,
+                prior_art_distance_new=scores.prior_art_distance,
+                owner_dept=ef.owner_dept,
+                action_90d=ef.action_90d,
+                mechanism_family=ef.mechanism_family,
+                brief_keywords=ef.primitives,
+            )
+            ideas.append(idea)
             bus.emit("idea_scored", "pipeline",
-                     name=idea.name,
+                     name=ef.name,
                      anti_orthodoxy=scores.anti_orthodoxy,
                      mechanism_originality=scores.mechanism_originality,
                      prior_art_distance=scores.prior_art_distance)
+
         bus.emit("ideas_proposed", "pipeline", round=round_num, count=len(ideas))
 
         # Run all diamonds × seeds in parallel via asyncio
