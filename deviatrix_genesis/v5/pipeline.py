@@ -454,13 +454,58 @@ def render_v5_report(result: dict[str, Any]) -> str:
 
 
 # ────────────────────────────────────────────────────────────────────
-# CLI
+# Multi-brief fusion
+# ────────────────────────────────────────────────────────────────────
+
+
+def run_multi_brief(
+    briefs: list[str],
+    n_ideas: int = 9,
+    max_rounds: int = 5,
+    seeds: list[int] | None = None,
+    out_dir: str | Path | None = None,
+) -> dict[str, Any]:
+    """Run multiple briefs and fuse survivors across them."""
+    brief_results: list[dict[str, Any]] = []
+    for brief in briefs:
+        result = run_v5_pipeline(
+            brief=brief, n_ideas=n_ideas, max_rounds=max_rounds, seeds=seeds,
+        )
+        brief_results.append({"brief": brief, "survivors": result["survivors"]})
+
+    # Cross-brief fusion
+    fuser = CrossBriefFusion()
+    cross_brief = fuser.fuse(brief_results)
+
+    output = {
+        "briefs": briefs,
+        "brief_results": brief_results,
+        "cross_brief_hybrids": [
+            {
+                "name": h.name,
+                "formula": h.formula,
+                "brief_sources": h.brief_sources,
+                "parent_names": h.parent_names,
+                "mechanism_families": h.mechanism_families,
+                "composite_z": h.composite_z,
+            }
+            for h in cross_brief
+        ],
+    }
+
+    if out_dir:
+        out = Path(out_dir)
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "multi_brief.json").write_text(json.dumps(output, indent=2, default=str))
+
+    return output
 # ────────────────────────────────────────────────────────────────────
 
 
 def main() -> int:
     p = argparse.ArgumentParser(description="Deviatrix v5 pipeline")
     p.add_argument("--brief", default="Operator-first GTM with financial primitives")
+    p.add_argument("--briefs", default=None, help="Comma-separated briefs for cross-brief fusion")
     p.add_argument("--n-ideas", type=int, default=9)
     p.add_argument("--max-rounds", type=int, default=10)
     p.add_argument("--seeds", default="2026,2043")
@@ -470,16 +515,23 @@ def main() -> int:
     args = p.parse_args()
 
     seeds = [int(s) for s in args.seeds.split(",")]
-    result = run_v5_pipeline(
-        brief=args.brief,
-        n_ideas=args.n_ideas,
-        max_rounds=args.max_rounds,
-        seeds=seeds,
-        write_memory_os=args.write_memory_os,
-        out_dir=args.out,
-        show_dashboard=args.dashboard,
-    )
-    print(render_v5_report(result))
+
+    if args.briefs:
+        briefs = [b.strip() for b in args.briefs.split("|")]
+        result = run_multi_brief(
+            briefs=briefs, n_ideas=args.n_ideas, max_rounds=args.max_rounds,
+            seeds=seeds, out_dir=args.out,
+        )
+        print(f"Cross-brief fusion: {len(result['cross_brief_hybrids'])} hybrids from {len(briefs)} briefs")
+        for h in result["cross_brief_hybrids"]:
+            print(f"  * {h['name']} — z={h['composite_z']:.2f} — {h['brief_sources']}")
+    else:
+        result = run_v5_pipeline(
+            brief=args.brief, n_ideas=args.n_ideas, max_rounds=args.max_rounds,
+            seeds=seeds, write_memory_os=args.write_memory_os,
+            out_dir=args.out, show_dashboard=args.dashboard,
+        )
+        print(render_v5_report(result))
     return 0
 
 

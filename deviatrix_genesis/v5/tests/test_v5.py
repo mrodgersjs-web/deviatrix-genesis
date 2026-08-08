@@ -501,5 +501,21 @@ class TestPipelineSmoke(unittest.TestCase):
         self.assertIn("idea1", report)
 
 
+class TestMultiBrief(unittest.TestCase):
+
+    def test_multi_brief_fusion(self):
+        from deviatrix_genesis.v5.pipeline import run_multi_brief
+
+        result = run_multi_brief(
+            briefs=["GTM with financial primitives", "Distribution channel strategy"],
+            n_ideas=3,
+            max_rounds=1,
+            seeds=[2026],
+        )
+        self.assertIn("briefs", result)
+        self.assertIn("cross_brief_hybrids", result)
+        self.assertEqual(len(result["briefs"]), 2)
+
+
 if __name__ == "__main__":
     unittest.main()
