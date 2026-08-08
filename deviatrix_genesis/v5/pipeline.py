@@ -400,6 +400,7 @@ def run_v5_pipeline(
         "memory_ids_written": memory_ids,
         "telemetry_events": len(bus.get_events()),
         "wall_clock_s": elapsed,
+        "quality": collector.quality_summary(),
     }
 
     if out_dir:
@@ -430,6 +431,16 @@ def render_v5_report(result: dict[str, Any]) -> str:
     lines.append(f"**Total packets:** {result['n_packets']}\n")
     lines.append(f"**Wall-clock:** {result['wall_clock_s']:.2f}s\n")
     lines.append(f"**Telemetry events:** {result['telemetry_events']}\n")
+
+    quality = result.get("quality", {})
+    if quality:
+        lines.append("## Quality Metrics\n")
+        lines.append(f"  * Expeditions: {quality.get('total_expeditions', 0)}")
+        lines.append(f"  * Pass rate: {quality.get('pass_rate_pct', 0)}%")
+        lines.append(f"  * Wall breaches: {quality.get('wall_breaches', 0)}")
+        lines.append(f"  * Avg diamond time: {quality.get('avg_diamond_ms', 0)}ms")
+        lines.append(f"  * Z-score: mean={quality.get('z_mean', 0)}, median={quality.get('z_median', 0)}, stdev={quality.get('z_stdev', 0)}")
+        lines.append(f"  * Z range: [{quality.get('z_min', 0)}, {quality.get('z_max', 0)}]")
 
     survivors = result.get("survivors", [])
     lines.append(f"\n## Survivors ({len(survivors)})\n")

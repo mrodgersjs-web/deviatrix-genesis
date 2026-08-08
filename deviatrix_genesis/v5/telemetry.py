@@ -7,6 +7,7 @@ or source.  Built-in :class:`ConvergenceMetrics` per round.
 from __future__ import annotations
 
 import asyncio
+import statistics
 import time
 from dataclasses import dataclass, field
 from typing import Any, Callable
@@ -114,6 +115,12 @@ class TelemetryCollector:
         self._sub_id: int | None = None
         self._prev_median_z: float = 0.0
         self._round_start: float = 0.0
+        # Quality metrics
+        self.total_expeditions: int = 0
+        self.total_passed: int = 0
+        self.total_wall_breaches: int = 0
+        self.diamond_timings: list[float] = []
+        self.expedition_z_scores: list[float] = []
 
     def start(self) -> None:
         self._sub_id = self.bus.subscribe(self._on_event)
@@ -139,6 +146,34 @@ class TelemetryCollector:
                 wall_clock_ms=elapsed,
             ))
             self._prev_median_z = median_z
+        elif evt.event_type == "expedition_complete":
+            self.total_expeditions += 1
+            z = evt.payload.get("z", 0.0)
+            self.expedition_z_scores.append(z)
+            if abs(z) < 30.0:
+                self.total_passed += 1
+            else:
+                self.total_wall_breaches += 1
+        elif evt.event_type == "diamond_complete":
+            wall_ms = evt.payload.get("wall_ms", 0.0)
+            self.diamond_timings.append(wall_ms)
+
+    def quality_summary(self) -> dict[str, Any]:
+        """Return aggregate quality metrics."""
+        pass_rate = (self.total_passed / self.total_expeditions * 100) if self.total_expeditions else 0.0
+        avg_diamond_ms = (sum(self.diamond_timings) / len(self.diamond_timings)) if self.diamond_timings else 0.0
+        z_scores = self.expedition_z_scores
+        return {
+            "total_expeditions": self.total_expeditions,
+            "pass_rate_pct": round(pass_rate, 1),
+            "wall_breaches": self.total_wall_breaches,
+            "avg_diamond_ms": round(avg_diamond_ms, 1),
+            "z_mean": round(statistics.mean(z_scores), 2) if z_scores else 0.0,
+            "z_median": round(statistics.median(z_scores), 2) if z_scores else 0.0,
+            "z_stdev": round(statistics.stdev(z_scores), 2) if len(z_scores) > 1 else 0.0,
+            "z_min": round(min(z_scores), 2) if z_scores else 0.0,
+            "z_max": round(max(z_scores), 2) if z_scores else 0.0,
+        }
 
 
 # ────────────────────────────────────────────────────────────────────
