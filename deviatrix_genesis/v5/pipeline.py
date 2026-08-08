@@ -237,9 +237,15 @@ def run_v5_pipeline(
     from ..v3.proposer import propose_from_brief
     from ..v3.collision import fuse_survivors
     from ..verifier import IndependentVerifier
+    from ..v4.embeddings import build_embedding_index, score_with_embeddings
 
     corpus = load_corpus()
     bus.emit("corpus_loaded", "pipeline", count=len(corpus))
+
+    # Build embedding index for cosine-similarity newness scoring
+    corpus_texts = [e.text for e in corpus]
+    embedding_index = build_embedding_index(corpus_texts)
+    bus.emit("embeddings_built", "pipeline", index_size=len(corpus_texts))
 
     verifier = IndependentVerifier(verifier_id="v5-verifier")
 
@@ -256,8 +262,21 @@ def run_v5_pipeline(
     for round_num in range(1, max_rounds + 1):
         bus.emit("round_start", "pipeline", round=round_num)
 
-        # Propose ideas from brief
+        # Propose ideas from brief, then score with embeddings
         ideas = propose_from_brief(brief, corpus=corpus, n=n_ideas)
+
+        # Score each idea's newness via cosine similarity (not Jaccard)
+        for idea in ideas:
+            idea_text = f"{idea.name} {idea.formula}"
+            scores = score_with_embeddings(idea_text, embedding_index)
+            idea.anti_orthodoxy_new = scores.anti_orthodoxy
+            idea.mechanism_originality_new = scores.mechanism_originality
+            idea.prior_art_distance_new = scores.prior_art_distance
+            bus.emit("idea_scored", "pipeline",
+                     name=idea.name,
+                     anti_orthodoxy=scores.anti_orthodoxy,
+                     mechanism_originality=scores.mechanism_originality,
+                     prior_art_distance=scores.prior_art_distance)
         bus.emit("ideas_proposed", "pipeline", round=round_num, count=len(ideas))
 
         # Run all diamonds × seeds in parallel via asyncio
