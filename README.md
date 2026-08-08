@@ -26,7 +26,10 @@ that terminates a run is the independent verifier.
 | Verifier         | `deviatrix_genesis.verifier`        | Reads packets, signs, decides PASS/FAIL/MUTATE/ESCALATE |
 | Conductor        | `deviatrix_genesis.conductors`      | Runs 3×3×7, writes artifacts |
 | CLI              | `deviatrix_genesis.cli.main`        | `python -m deviatrix_genesis run-full` |
-| Tests            | `deviatrix_genesis.tests.test_deviatrix` | 60 unit + integration tests |
+| **v3**           | `deviatrix_genesis.v3`              | Corpus loader, proposer, collision engine, ensemble, calibration, Memory OS adapter |
+| **v4**           | `deviatrix_genesis.v4`              | Async parallel runner, hashed embeddings, formula emitter, iterative rounds, memory export |
+| **v5**           | `deviatrix_genesis.v5`              | Async DAG executor, structured telemetry, adaptive convergence, cross-brief fusion, resilient Memory OS loop, live dashboard, benchmark harness |
+| Tests            | `deviatrix_genesis.{v3,v4,v5}.tests` | **112 tests** across all 4 versions |
 | Smoke            | `deviatrix_genesis.smoke`           | End-to-end synthetic-idea run |
 
 ## The doctrine in one paragraph
@@ -102,11 +105,90 @@ Each packet is SHA-256 sealed; each verdict is signed by the verifier.
 
 ```bash
 cd /Users/rig128gb/Projects/deviatrix-genesis
-PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix -v
+PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v
 ```
 
-60 tests across sympy_mcp, mathexec, executor, harness, three diamonds,
-IQRSQPI, routing, verifier, conductor, schemas, and CLI smoke.
+112 tests across all 4 versions:
+
+| Suite | Tests | Covers |
+|-------|-------|--------|
+| v1 (core) | 60 | sympy_mcp, mathexec, executor, harness, diamonds, IQRSQPI, routing, verifier, conductor, schemas, CLI |
+| v3 | 19 | corpus loader, proposer, collision, ensemble, calibration, Memory OS adapter, pipeline |
+| v4 | 3 | memory export idempotency, candidate blocking, deterministic IDs |
+| v5 | 30 | DAG (order, fan-out, errors, skip, timing), telemetry (emit, filter, unsubscribe, metrics), convergence (no-new, plateau, max-rounds, improving, reset), fusion (empty, single, complementary, overlapping), memory loop (brief builder, circuit breaker), dashboard (render, sparkline, subscribe), pipeline smoke |
+
+## v5 Pipeline
+
+The v5 pipeline adds adaptive convergence, structured telemetry, and a live dashboard:
+
+```bash
+PYTHONPATH=. python3 -m deviatrix_genesis.v5.pipeline \
+    --brief "Operator-first GTM with financial primitives" \
+    --n-ideas 9 \
+    --max-rounds 10 \
+    --seeds 2026,2043 \
+    --dashboard
+```
+
+Or programmatically:
+
+```python
+from deviatrix_genesis.v5.pipeline import run_v5_pipeline
+
+result = run_v5_pipeline(
+    brief="Operator-first GTM with financial primitives",
+    n_ideas=9,
+    max_rounds=10,
+    seeds=[2026, 2043],
+)
+print(f"{len(result['survivors'])} survivors in {result['n_rounds']} rounds")
+```
+
+### Benchmark v3 vs v5
+
+```bash
+PYTHONPATH=. python3 -m deviatrix_genesis.v5.benchmark \
+    --brief "Operator-first GTM with financial primitives" \
+    --engines v3,v5
+```
+
+### Individual v5 components
+
+```python
+# Async DAG executor
+from deviatrix_genesis.v5.dag import DAGExecutor, DAGNode
+ex = DAGExecutor()
+ex.add_node(DAGNode("a", my_coro))
+ex.add_node(DAGNode("b", my_coro, dependencies=["a"]))
+results = await ex.execute()
+
+# Structured telemetry
+from deviatrix_genesis.v5.telemetry import get_bus
+bus = get_bus()
+bus.subscribe(lambda evt: print(evt.event_type))
+bus.emit("round_start", "pipeline", round=1)
+
+# Adaptive convergence
+from deviatrix_genesis.v5.convergence import AdaptiveConvergence
+conv = AdaptiveConvergence(min_rounds=2, max_rounds=10)
+decision = conv.update(metrics, survivor_names)
+
+# Cross-brief fusion
+from deviatrix_genesis.v5.fusion import CrossBriefFusion
+f = CrossBriefFusion()
+hybrids = f.fuse([{"brief": "A", "survivors": [...]}, {"brief": "B", "survivors": [...]}])
+
+# Resilient Memory OS loop
+from deviatrix_genesis.v5.memory_loop import ResilientMemoryLoop
+loop = ResilientMemoryLoop()
+result = loop.run_cycle(brief="GTM strategy")
+
+# Live dashboard
+from deviatrix_genesis.v5.dashboard import Dashboard
+dash = Dashboard(bus)
+dash.start()
+print(dash.render())
+```
 
 ## Auth boundary
 
