@@ -1,7 +1,7 @@
 """v5 pipeline — the 1000x-over-v4 orchestrator.
 
 Ties together:
-  * Async DAG executor for parallel expeditions
+  * Async DAG executor for parallel expeditions (diamonds × seeds fan-out)
   * Structured telemetry for every stage
   * Adaptive convergence for early stopping
   * Cross-brief fusion for multi-brief runs
@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import statistics
 import sys
 import time
 from pathlib import Path
@@ -29,6 +30,153 @@ __all__ = ["run_v5_pipeline", "render_v5_report", "main"]
 
 
 # ────────────────────────────────────────────────────────────────────
+# Async expedition runner — the real parallelism
+# ────────────────────────────────────────────────────────────────────
+
+
+async def _run_one_diamond_async(
+    diamond_kind: str,
+    formula: str,
+    seed: int,
+    pop_size: int,
+    profiles: dict[str, Any],
+    bus: EventBus,
+) -> dict[str, Any]:
+    """Run one diamond (pos + neg parallel, then repaired) asynchronously."""
+    from .. import schemas
+    from ..conductors import DeviatrixConductor
+
+    t0 = time.monotonic()
+    conductor = DeviatrixConductor(seed=seed, profiles=profiles)
+
+    # Build claim + population
+    import random
+    rng = random.Random((seed * 1_000_003) ^ pop_size)
+    population = [rng.gauss(0, 1) for _ in range(pop_size)]
+
+    dk = schemas.DiamondKind(diamond_kind)
+    claim = conductor.claim_factory(formula, dk)
+    claim.reference_population = population
+    claim.candidate_hash = claim._hash()
+
+    from ..diamonds import DiamondHarness
+    harness = DiamondHarness(diamond=dk)
+
+    # Run positive + negative in parallel via asyncio.to_thread
+    pos_exp = conductor._positive_expedition(harness, dk)
+    neg_exp = conductor._negative_expedition(harness, dk)
+    pos_task = asyncio.to_thread(pos_exp.run, claim)
+    neg_task = asyncio.to_thread(neg_exp.run, claim)
+
+    # Emit telemetry
+    bus.emit("diamond_start", "pipeline", diamond=diamond_kind, seed=seed)
+
+    pos_outcome, neg_outcome = await asyncio.gather(pos_task, neg_task)
+
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="positive", seed=seed)
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="negative", seed=seed)
+
+    # Repaired depends on both outcomes — run after they complete
+    rep_exp = conductor._repaired_expedition(
+        harness, dk, pos_outcome=pos_outcome, neg_outcome=neg_outcome
+    )
+    rep_outcome = await asyncio.to_thread(rep_exp.run, claim)
+
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="repaired", seed=seed)
+    bus.emit("diamond_complete", "pipeline",
+             diamond=diamond_kind, seed=seed,
+             wall_ms=(time.monotonic() - t0) * 1000)
+
+    return {
+        "diamond": diamond_kind,
+        "seed": seed,
+        "outcomes": {
+            "positive_tail": pos_outcome,
+            "negative_tail": neg_outcome,
+            "repaired_tail": rep_outcome,
+        },
+        "wall_ms": (time.monotonic() - t0) * 1000,
+    }
+
+
+async def _run_all_diamonds_async(
+    formula: str,
+    seeds: list[int],
+    pop_size: int,
+    profiles: dict[str, Any],
+    bus: EventBus,
+) -> list[dict[str, Any]]:
+    """Run all 3 diamonds × N seeds in parallel using asyncio."""
+    diamonds = ["opportunity", "invention", "proof"]
+    tasks = [
+        _run_one_diamond_async(dk, formula, seed, pop_size, profiles, bus)
+        for seed in seeds
+        for dk in diamonds
+    ]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    outcomes: list[dict[str, Any]] = []
+    for r in results:
+        if isinstance(r, BaseException):
+            bus.emit("diamond_error", "pipeline", error=str(r))
+        else:
+            outcomes.append(r)
+    return outcomes
+
+
+# ────────────────────────────────────────────────────────────────────
+# Survivors extraction from async results
+# ────────────────────────────────────────────────────────────────────
+
+
+def _extract_survivors(
+    diamond_results: list[dict[str, Any]],
+    verifier: Any,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Extract survivors and dropped from diamond results."""
+    from ..diamonds.routing import action_for, band_for, is_wall
+
+    survivors: list[dict[str, Any]] = []
+    dropped: list[dict[str, Any]] = []
+
+    for dr in diamond_results:
+        dk = dr["diamond"]
+        seed = dr["seed"]
+        for kind, outcome in dr["outcomes"].items():
+            z = outcome.certified_z
+            entry = {
+                "name": f"{dk}_{kind}_s{seed}",
+                "diamond": dk,
+                "expedition": kind,
+                "seed": seed,
+                "composite_z": z,
+                "composite_z_median": z,
+                "band": band_for(z),
+                "action": action_for(z),
+                "formula": outcome.packets[0].symbolic.simplified_expression if outcome.packets else "",
+                "wall_breach": is_wall(z),
+            }
+
+            # Verify
+            if outcome.packets:
+                report = verifier.verify(outcome.packets[0])
+                entry["verifier_decision"] = report.decision.value
+                entry["verifier_reason"] = report.reason
+
+                if report.decision.value == "PASS" and not is_wall(z):
+                    survivors.append(entry)
+                else:
+                    dropped.append(entry)
+            else:
+                dropped.append(entry)
+
+    return survivors, dropped
+
+
+# ────────────────────────────────────────────────────────────────────
 # Core pipeline
 # ────────────────────────────────────────────────────────────────────
 
@@ -38,11 +186,12 @@ def run_v5_pipeline(
     n_ideas: int = 9,
     max_rounds: int = 10,
     seeds: list[int] | None = None,
+    pop_size: int = 500,
     write_memory_os: bool = False,
     out_dir: str | Path | None = None,
     show_dashboard: bool = False,
 ) -> dict[str, Any]:
-    """Run the v5 pipeline end-to-end.
+    """Run the v5 pipeline end-to-end with real async parallelism.
 
     Returns a dict with keys: brief, corpus_size, ideas_proposed,
     survivors, dropped, hybrids, convergence_round, n_rounds,
@@ -71,11 +220,13 @@ def run_v5_pipeline(
     # ── load substrate ──────────────────────────────────────────────
     from ..v3.corpus_loader import load_corpus
     from ..v3.proposer import propose_from_brief
-    from ..v3.ensemble import run_ensemble
     from ..v3.collision import fuse_survivors
+    from ..verifier import IndependentVerifier
 
     corpus = load_corpus()
     bus.emit("corpus_loaded", "pipeline", count=len(corpus))
+
+    verifier = IndependentVerifier(verifier_id="v5-verifier")
 
     # ── iterative rounds ────────────────────────────────────────────
     all_survivors: list[dict[str, Any]] = []
@@ -83,52 +234,45 @@ def run_v5_pipeline(
     all_hybrids: list[dict[str, Any]] = []
     total_packets = 0
 
+    # Profiles from conductor defaults
+    from ..conductors import DEFAULT_PROFILES
+    profiles = DEFAULT_PROFILES
+
     for round_num in range(1, max_rounds + 1):
         bus.emit("round_start", "pipeline", round=round_num)
 
-        # Propose ideas (first round from brief, later rounds from survivors)
-        if round_num == 1:
-            ideas = propose_from_brief(brief, corpus=corpus, n=n_ideas)
-        else:
-            # Feed survivors back as new corpus entries for the proposer
-            ideas = propose_from_brief(brief, corpus=corpus, n=n_ideas)
-
+        # Propose ideas from brief
+        ideas = propose_from_brief(brief, corpus=corpus, n=n_ideas)
         bus.emit("ideas_proposed", "pipeline", round=round_num, count=len(ideas))
 
-        # Run ensemble (this is where the 3×3×7 happens)
-        ensemble = run_ensemble(
-            brief=brief, n_seeds=len(seeds),
-            corpus=corpus, use_collision=True,
+        # Run all diamonds × seeds in parallel via asyncio
+        formula = ideas[0].formula if ideas else "x**2 + x"
+        diamond_results = asyncio.run(
+            _run_all_diamonds_async(formula, seeds, pop_size, profiles, bus)
         )
 
-        round_survivors = ensemble.survivors
-        round_dropped = ensemble.dropped
-        round_hybrids = ensemble.hybrids
-        total_packets += len(ensemble.ideas) * len(seeds) * 9
+        # Extract survivors
+        round_survivors, round_dropped = _extract_survivors(diamond_results, verifier)
+        total_packets += sum(len(dr["outcomes"]) for dr in diamond_results)
 
-        # Collect survivors
-        survivor_names = {s.get("name", "") for s in round_survivors}
+        survivor_names = {s["name"] for s in round_survivors}
         all_survivors.extend(round_survivors)
         all_dropped.extend(round_dropped)
-        all_hybrids.extend(round_hybrids)
 
-        # Compute round metrics
-        z_values = [s.get("composite_z_median", s.get("composite_z", 0.0)) for s in round_survivors]
-        import statistics
+        # Round metrics
+        z_values = [s["composite_z"] for s in round_survivors]
         median_z = statistics.median(z_values) if z_values else 0.0
         max_z = max(z_values) if z_values else 0.0
 
         bus.emit("round_end", "pipeline",
                  round=round_num,
                  survivors_count=len(round_survivors),
-                 median_z=median_z,
-                 max_z=max_z,
+                 median_z=median_z, max_z=max_z,
                  wall_ms=(time.monotonic() - t0) * 1000)
 
-        # Check convergence
-        metrics = collector.rounds[-1] if collector.rounds else None
-        if metrics:
-            decision = convergence.update(metrics, survivor_names)
+        # Convergence check
+        if collector.rounds:
+            decision = convergence.update(collector.rounds[-1], survivor_names)
             if decision.should_stop:
                 bus.emit("convergence", "pipeline",
                          round=round_num, reason=decision.reason)
@@ -136,44 +280,42 @@ def run_v5_pipeline(
 
         # Collision: fuse survivors into hybrids for next round
         if round_survivors:
-            # Convert survivors to GTMIdea-like objects for fusion
             from ..v3.proposer import GTMIdea
-            gtm_ideas = []
-            for s in round_survivors:
-                gtm_ideas.append(GTMIdea(
-                    name=s.get("name", "unknown"),
+            gtm_ideas = [
+                GTMIdea(
+                    name=s["name"],
                     formula=s.get("formula", ""),
-                    falsifier=s.get("falsifier", ""),
-                    closest_known_archetype=s.get("closest_known_archetype"),
+                    falsifier="",
+                    closest_known_archetype=None,
                     mechanism_family=s.get("mechanism_family", ""),
-                    owner_dept=s.get("owner_dept", "strategy"),
+                    owner_dept="strategy",
                     brief_keywords=[],
-                ))
+                )
+                for s in round_survivors
+            ]
             hybrids = fuse_survivors(gtm_ideas, n_hybrids=3)
             for h in hybrids:
                 all_hybrids.append({
-                    "name": h.name,
-                    "formula": h.formula,
-                    "composite_z": 0.0,
-                    "parent_names": h.parent_names,
+                    "name": h.name, "formula": h.formula,
+                    "composite_z": 0.0, "parent_names": h.parent_names,
                 })
 
     # ── dedupe survivors ────────────────────────────────────────────
     by_name: dict[str, dict[str, Any]] = {}
     for s in all_survivors:
-        name = s.get("name", "")
+        name = s["name"]
         z = s.get("composite_z_median", s.get("composite_z", 0.0))
         if name not in by_name or z > by_name[name].get("composite_z_median", 0.0):
             by_name[name] = s
-    deduped_survivors = sorted(by_name.values(), key=lambda s: -s.get("composite_z_median", s.get("composite_z", 0.0)))
+    deduped = sorted(by_name.values(), key=lambda s: -s.get("composite_z_median", 0.0))
 
     # ── memory OS write-back ────────────────────────────────────────
     memory_ids: list[str] = []
     if write_memory_os:
         try:
             loop = ResilientMemoryLoop()
-            cycle_result = loop.run_cycle(brief=brief, max_ideas=n_ideas)
-            memory_ids = cycle_result.get("memory_ids_written", [])
+            cycle = loop.run_cycle(brief=brief, max_ideas=n_ideas)
+            memory_ids = cycle.get("memory_ids_written", [])
             bus.emit("memory_write", "pipeline", count=len(memory_ids))
         except Exception as exc:
             bus.emit("memory_error", "pipeline", error=str(exc))
@@ -189,7 +331,7 @@ def run_v5_pipeline(
         "ideas_proposed": n_ideas,
         "n_seeds": len(seeds),
         "seeds": seeds,
-        "survivors": deduped_survivors,
+        "survivors": deduped,
         "dropped": all_dropped,
         "hybrids": all_hybrids,
         "convergence_round": len(collector.rounds),
@@ -200,7 +342,6 @@ def run_v5_pipeline(
         "wall_clock_s": elapsed,
     }
 
-    # ── write output ────────────────────────────────────────────────
     if out_dir:
         out = Path(out_dir)
         out.mkdir(parents=True, exist_ok=True)
