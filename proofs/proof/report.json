@@ -1,0 +1,105 @@
+{
+  "diamond": "proof",
+  "n_packets": 3,
+  "n_trace": 63,
+  "iqrsqpi": {
+    "positive_tail": {
+      "run_id": "iqrsqpi-0ac74845",
+      "diamond": "proof",
+      "expedition": "positive_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "negative_tail": {
+      "run_id": "iqrsqpi-d7c7e2d8",
+      "diamond": "proof",
+      "expedition": "negative_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "repaired_tail": {
+      "run_id": "iqrsqpi-ce2c3cb5",
+      "diamond": "proof",
+      "expedition": "repaired_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "outcomes": {
+    "positive_tail": {
+      "certified_z": 11.667823721159511,
+      "band": "+10\u03c3\u201320\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "PASS",
+      "sealed_hash": "5c7d135c78fd2e9024ef5b99b427b6c8",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "adversarial_proof",
+      "wall_breach": false
+    },
+    "negative_tail": {
+      "certified_z": -2.2942152298847147,
+      "band": "-0\u03c3\u20133\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "WEAK",
+      "sealed_hash": "50d619bde9faf389d82526d97c93c781",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "reject",
+      "wall_breach": false
+    },
+    "repaired_tail": {
+      "certified_z": 7.019996470449622,
+      "band": "+5\u03c3\u201310\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "PASS",
+      "sealed_hash": "9a80e8234d88b5287861126ae86e839c",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "deep_review",
+      "wall_breach": false
+    }
+  }
+}

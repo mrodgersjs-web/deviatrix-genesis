@@ -1,0 +1,158 @@
+==============================================================================
+RIG-GTM DEVIATRIX — 9 ideas × 3 diamonds × 3 expeditions
+==============================================================================
+
+Verifier summary:
+  verifier_id       : verifier-rig-gtm
+  n_reports         : 81
+  n_pass            : 48
+  n_fail            : 18
+  n_mutate          : 15
+  n_escalate        : 0
+  wall_breaches     : []
+
+Ideas ranked by composite repaired-tail z (across D1+D2+D3):
+
+#1. Doctrine-to-Deal — paid assessment → retainer funnel
+     composite z     :     6.70σ  → +5σ–10σ
+     system action   : deep_review
+     wall breach?    : False
+     owner department: gtm
+     90-day action   : Build the doctrine assessment (10-minute intake, 30-minute output), publish it as a free funnel on the public site, gate…
+     falsifier       : < 8% assessment-to-retainer conversion over 90 days OR assessment NPS < 7 OR < $50K closed-won from assessment-sourced l…
+     per-diamond z:
+        opportunity  pos=  25.09  neg=  -1.83  rep=  20.77  band=+20σ–30σ        verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : d1a5c1835ca1f614…
+        invention_repaired            : 0d598c87bc696d1e…
+        proof_repaired                : 241a7fc0e653ee81…
+
+#2. Operator-as-Service (OaaS) — paid Retainer for an Operator Agent
+     composite z     :     6.52σ  → +5σ–10σ
+     system action   : deep_review
+     wall breach?    : False
+     owner department: gtm
+     90-day action   : Define the OaaS offering, package 3 pricing tiers ($5K/$12K/$25K/mo), publish the doctrine whitepaper, and recruit 5 ope…
+     falsifier       : An incumbent copy-cat offering a 'fractional CAIO' within 60 days of announcement, OR a churn rate > 8% in the first 90 …
+     per-diamond z:
+        opportunity  pos=  24.47  neg=  -1.83  rep=  20.23  band=+20σ–30σ        verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 0b99930311af2b10…
+        invention_repaired            : 095d461ec4530fb5…
+        proof_repaired                : 5ee9f233d701ab88…
+
+#3. RIG-OS Marketplace — operators ship modules; RIG takes 30%
+     composite z     :     5.75σ  → +5σ–10σ
+     system action   : deep_review
+     wall breach?    : False
+     owner department: partnerships
+     90-day action   : Stand up the marketplace scaffold (Stripe Connect, listing page, module submission form), recruit 5 anchor operators wit…
+     falsifier       : < 5 paying modules in 90 days OR < 10 active operators OR < $25K marketplace GMV in the first quarter.…
+     per-diamond z:
+        opportunity  pos=  21.80  neg=  -1.83  rep=  17.93  band=+10σ–20σ        verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 7e18bb1c148b5c30…
+        invention_repaired            : 8c4ac49e6b9d6f78…
+        proof_repaired                : de4bccba1ef2af06…
+
+#4. Operator Studio — agency services; ship the work, name the doctrine
+     composite z     :     3.82σ  → +3σ–5σ
+     system action   : collision
+     wall breach?    : False
+     owner department: sales
+     90-day action   : Define 3 service packages (Build / Embed / Certify), publish the doctrine-as-process, sign 3 anchor clients at $15K-$50K…
+     falsifier       : < 2 shipped operator engagements in 90 days OR < $40K services revenue OR zero public artifacts from the engagements.…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=  15.02  neg=  -2.60  rep=  11.78  band=+10σ–20σ        verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 9f282458f36c382d…
+        invention_repaired            : db99945fe797214c…
+        proof_repaired                : 1c9094c2ccd2c8fd…
+
+#5. Public Audit Receipt — anonymous before/after of customer systems
+     composite z     :     3.69σ  → +3σ–5σ
+     system action   : collision
+     wall breach?    : False
+     owner department: proof
+     90-day action   : Recruit 3 customers willing to publish before/after audits, redact PII, publish the first 3 case files, and track downst…
+     falsifier       : Zero customers consent to anonymous before/after publication OR the published audit fails independent review.…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=  14.59  neg=  -2.60  rep=  11.41  band=+10σ–20σ        verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : e38325e851d6af4a…
+        invention_repaired            : c357f9135a528a8d…
+        proof_repaired                : ec799b8e3741e7f5…
+
+#6. Operator's Weekly — paid newsletter as the public GTM front door
+     composite z     :     3.57σ  → +3σ–5σ
+     system action   : collision
+     wall breach?    : False
+     owner department: content
+     90-day action   : Lock a 12-issue Operator's Weekly calendar, publish the first 4 free issues, stand up a paid tier at $20/mo with 1 ancho…
+     falsifier       : Open rate < 35% sustained over 90 days OR <2% conversion to paid OR < 3 paying customers from the newsletter in the firs…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=   0.00  neg=  -2.76  rep=   0.50  band=0σ–3σ           verdict=MUTATE  
+        proof        pos=  14.16  neg=  -2.60  rep=  11.04  band=+10σ–20σ        verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 61e7974b44007efe…
+        invention_repaired            : b9fc975653b047d8…
+        proof_repaired                : 877232ea9e9e34f1…
+
+#7. Operator Cohort — paid group-program as anti-course
+     composite z     :     3.03σ  → +3σ–5σ
+     system action   : collision
+     wall breach?    : False
+     owner department: content
+     90-day action   : Define the 6-week cohort curriculum, recruit 1 anchor operator, open enrollment at $1.5K/seat with a 30-seat cap, run th…
+     falsifier       : < 25 paid seats in the first cohort OR < 60% completion OR < $40K cohort revenue.…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=  16.23  neg=  -2.76  rep=  11.08  band=+10σ–20σ        verdict=PASS    
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : f90648023322f4e5…
+        invention_repaired            : 226d246e69d774bd…
+        proof_repaired                : c0afe9571256025e…
+
+#8. Deviation-Engine-as-a-Service — paid access to ±30σ engine API
+     composite z     :     2.99σ  → 0σ–3σ
+     system action   : anti_median
+     wall breach?    : False
+     owner department: sales
+     90-day action   : Ship a sealed Deviation-Engine API v1 (3 endpoints, 1 SDK), publish the open evaluation harness, and on-board 10 paid de…
+     falsifier       : An open-source recreation of the engine within 90 days OR a competitor ships an identical API surface for <$200/mo, OR n…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=  16.06  neg=  -2.76  rep=  10.97  band=+10σ–20σ        verdict=PASS    
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 954747e30926648a…
+        invention_repaired            : 9f571563a7ca153f…
+        proof_repaired                : 01769afc0aa6d411…
+
+#9. Deviation-Engine Certification — paid exam; certified = employable
+     composite z     :     2.97σ  → 0σ–3σ
+     system action   : anti_median
+     wall breach?    : False
+     owner department: sales
+     90-day action   : Design the 3-hour online exam (40 multiple-choice + 2 practical), publish the syllabus, recruit 5 employer partners will…
+     falsifier       : < 100 paid candidates in 90 days OR < 60% pass rate OR no employer willing to interview a certified candidate.…
+     per-diamond z:
+        opportunity  pos=   0.00  neg=  -1.83  rep=  -0.82  band=-0σ–3σ          verdict=PASS    
+        invention    pos=  15.97  neg=  -2.76  rep=  10.91  band=+10σ–20σ        verdict=PASS    
+        proof        pos=   0.00  neg=  -2.60  rep=  -1.18  band=-0σ–3σ          verdict=PASS    
+     sealed hashes   :
+        opportunity_repaired          : 256eb99d89828b9d…
+        invention_repaired            : f9e3ba3b8cbac275…
+        proof_repaired                : 4e01c70dbb6ba651…

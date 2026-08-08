@@ -1,0 +1,857 @@
+{
+  "verifier_summary": {
+    "verifier_id": "verifier-rig-gtm-v2",
+    "n_reports": 81,
+    "n_pass": 63,
+    "n_fail": 0,
+    "n_mutate": 9,
+    "n_escalate": 9,
+    "wall_breaches": [
+      "opportunity-repaired_tail-3a67e091",
+      "opportunity-repaired_tail-a39af811",
+      "opportunity-repaired_tail-2e40440a",
+      "opportunity-repaired_tail-5b37eddf",
+      "opportunity-repaired_tail-3de53cb3",
+      "opportunity-repaired_tail-42193141",
+      "opportunity-repaired_tail-3caf6c03",
+      "opportunity-repaired_tail-74929b4b",
+      "opportunity-repaired_tail-1e8525b8"
+    ]
+  },
+  "all_ideas": [
+    {
+      "name": "Doctrine-Indexed Bond \u2014 investors fund operators against a verifiable doctrine-yield curve",
+      "owner_dept": "finance",
+      "action_90d": "Design the doctrine-yield curve (operator-output \u00d7 verification-rate \u00d7 duration), publish the spec, recruit 1 friendly investor, file the regulatory posture (likely Reg D / S or non-security per Howey), deploy $50K\u2013$250K as the first cohort.",
+      "falsifier": "No investor willing to fund under the doctrine-yield curve OR the yield curve is falsified by an operator OR < $100K deployed.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.9,
+      "archetype_z": 4.646081291817728,
+      "is_respin_of_known": false,
+      "composite_z": 18.908219606272585,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 19.01390936840422,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 32.58926535165054,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 32.59 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.347644583284684,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.246504494566098,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.381935664023265,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.888888972601116,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "71f059a181c599c037c8ccb67c5c0db0",
+        "invention_repaired": "70a73f64f62634ba659f03883a038de5",
+        "proof_repaired": "7768fd5b29b598760b845fafa59711e7"
+      }
+    },
+    {
+      "name": "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products",
+      "owner_dept": "strategy",
+      "action_90d": "Design the reputation object schema (JSON-LD or signed CBOR), publish the spec, recruit 3 platforms willing to honour the receipt, run a 90-day pilot with 50 operators.",
+      "falsifier": "Operators refuse the primitive OR < 100 operators sign up OR no platform adopts the receipt format within 90 days.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.9,
+      "archetype_z": 4.646081291817728,
+      "is_respin_of_known": false,
+      "composite_z": 18.908219606272585,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 19.01390936840422,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 32.58926535165054,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 32.59 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.347644583284684,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.246504494566098,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.381935664023265,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.888888972601116,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "977c819782722222e0f8daa28ae3e8e7",
+        "invention_repaired": "e169b1b190858f77df2770314a02435f",
+        "proof_repaired": "6bcbf144519865e43a0b2997a4581198"
+      }
+    },
+    {
+      "name": "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified",
+      "owner_dept": "gtm",
+      "action_90d": "Design the outcome-escrow protocol (state-machine + verifier network), publish the spec, recruit 2 independent-verification partners (one auditor, one law firm), and on-board 3 customers willing to escrow $10K+ each.",
+      "falsifier": "Any comparable outcome-escrow marketplace launches within 90 days OR < 5 customer-paid escrows OR < 1 independent-verification partner agrees to the protocol.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.8,
+      "archetype_z": 4.53188384417155,
+      "is_respin_of_known": false,
+      "composite_z": 18.45647109158163,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.620767584551935,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.816463040597757,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.82 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.151073691358539,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.050462417072408,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.18536477209712,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.502487817074721,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "a238e0cdf5caa2ef5f3c57246b546514",
+        "invention_repaired": "bf9a02415a9304f309cfe975a652bb7f",
+        "proof_repaired": "cf0ec599f2561443f84f0a813f8e9572"
+      }
+    },
+    {
+      "name": "Negative-Pick Distribution \u2014 pay operators to *not* recommend competitors, with the option to disclose the payment",
+      "owner_dept": "strategy",
+      "action_90d": "Design the negative-pick contract (payment-for-non-recommendation + optional disclosure), publish the spec, recruit 3 operators willing to test, run a 90-day pilot with 10 customers.",
+      "falsifier": "Operators refuse the disclosure option OR no customer activates a negative-pick OR the disclosure itself damages trust.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.8,
+      "archetype_z": 4.53188384417155,
+      "is_respin_of_known": false,
+      "composite_z": 18.45647109158163,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.620767584551935,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.816463040597757,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.82 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.151073691358539,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.050462417072408,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.18536477209712,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.502487817074721,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "7050757de6479c0b30799d6d57f3b3de",
+        "invention_repaired": "2fbf0ecf8ac74ff9eb1b626060760ffd",
+        "proof_repaired": "2c756fc9b8e2e95705289af7cd447702"
+      }
+    },
+    {
+      "name": "Operator-as-Public-Good \u2014 free operators paid by visible-attribution in the output",
+      "owner_dept": "content",
+      "action_90d": "Design the attribution protocol (signed receipts + downstream conversion telemetry), publish the spec, instrument 3 public operators to test the visibility-premium, run a 90-day attribution measurement.",
+      "falsifier": "Operators refuse the visibility-premium OR < $50K downstream revenue is generated in 90 days OR no measurable attribution delta between tagged and untagged outputs.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "76f2df567204d117f6f1760088f5954a",
+        "invention_repaired": "e79152789eebbcaa6a02fdf8c7a18720",
+        "proof_repaired": "639e62e0f74c15bb9b9e0960a62a3c0b"
+      }
+    },
+    {
+      "name": "Doctrine-as-Smart-Contract \u2014 RIG publishes the doctrine as executable code that pays operators when they meet it",
+      "owner_dept": "engineering",
+      "action_90d": "Write the doctrine as a smart contract (Solidity or equivalent), publish the code + verification guarantees, deploy on testnet, audit the contract, recruit 5 operators to test auto-payment.",
+      "falsifier": "No operator accepts the executable doctrine OR < 5 operators auto-paid OR the verification guarantee is reverse-engineered.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "29d3229d9d9d5875a5230b81d69179bb",
+        "invention_repaired": "01e0fad40b761423e8fea34f0fdc68e6",
+        "proof_repaired": "93e640b91bd27bffd1153f15ca2085d5"
+      }
+    },
+    {
+      "name": "Counterfactual Receipt \u2014 customers pay for the *saved* outcome, not the delivered one, with the counterfactual independently reconstructed",
+      "owner_dept": "strategy",
+      "action_90d": "Design the counterfactual-receipt protocol (independent baseline reconstruction + delta measurement + payment-on-delta), publish the spec, recruit 2 re-constructor partners, run a 90-day pilot.",
+      "falsifier": "No independent re-constructor agrees to the protocol OR < $50K saved-outcome payments in 90 days OR the baseline is challenged.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "6239d20b6126c540c9ec561ce44753dd",
+        "invention_repaired": "a2c8236d1e9bd6d25056433f03f2aca3",
+        "proof_repaired": "b9433ba7ac52082d5aed47fa52be92b7"
+      }
+    },
+    {
+      "name": "Anti-Adversarial Distribution \u2014 paid leads whose quality is provably not the seller's incentive",
+      "owner_dept": "sales",
+      "action_90d": "Design the adversarial-quality protocol (third-party audit of the lead-source method), publish the spec, recruit 2 buyers willing to pay per-verified-lead (not per-lead), run a 90-day cohort.",
+      "falsifier": "Lead quality regresses to the prior mean within 90 days OR the verification mechanism is reverse-engineered OR < 100 qualified leads delivered.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.6,
+      "archetype_z": 4.303488948879196,
+      "is_respin_of_known": false,
+      "composite_z": 17.552974062199727,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 17.834484016847366,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 30.270858418492196,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 30.27 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.757931907506256,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.658378262085037,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.792222988244838,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 10.729685506021942,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "bdcf5727d9cb7af2b89a590d66ccf055",
+        "invention_repaired": "0b386eee2a6bbdd922a240ddb0125c03",
+        "proof_repaired": "99ade2f013b4fce506dd70acb49278b4"
+      }
+    },
+    {
+      "name": "Reverse-Auction Doctrine \u2014 customers post a problem; operators underbid each other on the right to fix it",
+      "owner_dept": "gtm",
+      "action_90d": "Design the reverse-auction protocol (problem-post + underbid window + escrow release), publish the spec, seed 10 problem posts from friendly customers, run a 90-day auction.",
+      "falsifier": "Operators refuse to underbid OR < 50 problems posted OR < 10 paid resolutions OR the underbid price floor collapses.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.6,
+      "archetype_z": 4.303488948879196,
+      "is_respin_of_known": false,
+      "composite_z": 17.552974062199727,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 17.834484016847366,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 30.270858418492196,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 30.27 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.757931907506256,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.658378262085037,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.792222988244838,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 10.729685506021942,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "9d0b3d701e4b70a68a00084e784b23a4",
+        "invention_repaired": "fe740391bfb3e9f361cbd5bab0fb08e8",
+        "proof_repaired": "9df98efc2186245aa580f8b8a62755d8"
+      }
+    }
+  ],
+  "survivors": [
+    {
+      "name": "Doctrine-Indexed Bond \u2014 investors fund operators against a verifiable doctrine-yield curve",
+      "owner_dept": "finance",
+      "action_90d": "Design the doctrine-yield curve (operator-output \u00d7 verification-rate \u00d7 duration), publish the spec, recruit 1 friendly investor, file the regulatory posture (likely Reg D / S or non-security per Howey), deploy $50K\u2013$250K as the first cohort.",
+      "falsifier": "No investor willing to fund under the doctrine-yield curve OR the yield curve is falsified by an operator OR < $100K deployed.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.9,
+      "archetype_z": 4.646081291817728,
+      "is_respin_of_known": false,
+      "composite_z": 18.908219606272585,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 19.01390936840422,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 32.58926535165054,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 32.59 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.347644583284684,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.246504494566098,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.381935664023265,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.888888972601116,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "71f059a181c599c037c8ccb67c5c0db0",
+        "invention_repaired": "70a73f64f62634ba659f03883a038de5",
+        "proof_repaired": "7768fd5b29b598760b845fafa59711e7"
+      }
+    },
+    {
+      "name": "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products",
+      "owner_dept": "strategy",
+      "action_90d": "Design the reputation object schema (JSON-LD or signed CBOR), publish the spec, recruit 3 platforms willing to honour the receipt, run a 90-day pilot with 50 operators.",
+      "falsifier": "Operators refuse the primitive OR < 100 operators sign up OR no platform adopts the receipt format within 90 days.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.9,
+      "archetype_z": 4.646081291817728,
+      "is_respin_of_known": false,
+      "composite_z": 18.908219606272585,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 19.01390936840422,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 32.58926535165054,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 32.59 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.347644583284684,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.246504494566098,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.381935664023265,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.888888972601116,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "977c819782722222e0f8daa28ae3e8e7",
+        "invention_repaired": "e169b1b190858f77df2770314a02435f",
+        "proof_repaired": "6bcbf144519865e43a0b2997a4581198"
+      }
+    },
+    {
+      "name": "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified",
+      "owner_dept": "gtm",
+      "action_90d": "Design the outcome-escrow protocol (state-machine + verifier network), publish the spec, recruit 2 independent-verification partners (one auditor, one law firm), and on-board 3 customers willing to escrow $10K+ each.",
+      "falsifier": "Any comparable outcome-escrow marketplace launches within 90 days OR < 5 customer-paid escrows OR < 1 independent-verification partner agrees to the protocol.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.8,
+      "archetype_z": 4.53188384417155,
+      "is_respin_of_known": false,
+      "composite_z": 18.45647109158163,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.620767584551935,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.816463040597757,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.82 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.151073691358539,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.050462417072408,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.18536477209712,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.502487817074721,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "a238e0cdf5caa2ef5f3c57246b546514",
+        "invention_repaired": "bf9a02415a9304f309cfe975a652bb7f",
+        "proof_repaired": "cf0ec599f2561443f84f0a813f8e9572"
+      }
+    },
+    {
+      "name": "Negative-Pick Distribution \u2014 pay operators to *not* recommend competitors, with the option to disclose the payment",
+      "owner_dept": "strategy",
+      "action_90d": "Design the negative-pick contract (payment-for-non-recommendation + optional disclosure), publish the spec, recruit 3 operators willing to test, run a 90-day pilot with 10 customers.",
+      "falsifier": "Operators refuse the disclosure option OR no customer activates a negative-pick OR the disclosure itself damages trust.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.8,
+      "archetype_z": 4.53188384417155,
+      "is_respin_of_known": false,
+      "composite_z": 18.45647109158163,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.620767584551935,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.816463040597757,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.82 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 11.151073691358539,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 12.050462417072408,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 9.18536477209712,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.502487817074721,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "7050757de6479c0b30799d6d57f3b3de",
+        "invention_repaired": "2fbf0ecf8ac74ff9eb1b626060760ffd",
+        "proof_repaired": "2c756fc9b8e2e95705289af7cd447702"
+      }
+    },
+    {
+      "name": "Operator-as-Public-Good \u2014 free operators paid by visible-attribution in the output",
+      "owner_dept": "content",
+      "action_90d": "Design the attribution protocol (signed receipts + downstream conversion telemetry), publish the spec, instrument 3 public operators to test the visibility-premium, run a 90-day attribution measurement.",
+      "falsifier": "Operators refuse the visibility-premium OR < $50K downstream revenue is generated in 90 days OR no measurable attribution delta between tagged and untagged outputs.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "76f2df567204d117f6f1760088f5954a",
+        "invention_repaired": "e79152789eebbcaa6a02fdf8c7a18720",
+        "proof_repaired": "639e62e0f74c15bb9b9e0960a62a3c0b"
+      }
+    },
+    {
+      "name": "Doctrine-as-Smart-Contract \u2014 RIG publishes the doctrine as executable code that pays operators when they meet it",
+      "owner_dept": "engineering",
+      "action_90d": "Write the doctrine as a smart contract (Solidity or equivalent), publish the code + verification guarantees, deploy on testnet, audit the contract, recruit 5 operators to test auto-payment.",
+      "falsifier": "No operator accepts the executable doctrine OR < 5 operators auto-paid OR the verification guarantee is reverse-engineered.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "29d3229d9d9d5875a5230b81d69179bb",
+        "invention_repaired": "01e0fad40b761423e8fea34f0fdc68e6",
+        "proof_repaired": "93e640b91bd27bffd1153f15ca2085d5"
+      }
+    },
+    {
+      "name": "Counterfactual Receipt \u2014 customers pay for the *saved* outcome, not the delivered one, with the counterfactual independently reconstructed",
+      "owner_dept": "strategy",
+      "action_90d": "Design the counterfactual-receipt protocol (independent baseline reconstruction + delta measurement + payment-on-delta), publish the spec, recruit 2 re-constructor partners, run a 90-day pilot.",
+      "falsifier": "No independent re-constructor agrees to the protocol OR < $50K saved-outcome payments in 90 days OR the baseline is challenged.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.7,
+      "archetype_z": 4.417686396525374,
+      "is_respin_of_known": false,
+      "composite_z": 18.00472257689068,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 18.227625800699652,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 31.043660729544982,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 31.04 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.954502799432397,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.85442033957872,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.988793880170979,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 11.116086661548332,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "6239d20b6126c540c9ec561ce44753dd",
+        "invention_repaired": "a2c8236d1e9bd6d25056433f03f2aca3",
+        "proof_repaired": "b9433ba7ac52082d5aed47fa52be92b7"
+      }
+    },
+    {
+      "name": "Anti-Adversarial Distribution \u2014 paid leads whose quality is provably not the seller's incentive",
+      "owner_dept": "sales",
+      "action_90d": "Design the adversarial-quality protocol (third-party audit of the lead-source method), publish the spec, recruit 2 buyers willing to pay per-verified-lead (not per-lead), run a 90-day cohort.",
+      "falsifier": "Lead quality regresses to the prior mean within 90 days OR the verification mechanism is reverse-engineered OR < 100 qualified leads delivered.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.6,
+      "archetype_z": 4.303488948879196,
+      "is_respin_of_known": false,
+      "composite_z": 17.552974062199727,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 17.834484016847366,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 30.270858418492196,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 30.27 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.757931907506256,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.658378262085037,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.792222988244838,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 10.729685506021942,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "bdcf5727d9cb7af2b89a590d66ccf055",
+        "invention_repaired": "0b386eee2a6bbdd922a240ddb0125c03",
+        "proof_repaired": "99ade2f013b4fce506dd70acb49278b4"
+      }
+    },
+    {
+      "name": "Reverse-Auction Doctrine \u2014 customers post a problem; operators underbid each other on the right to fix it",
+      "owner_dept": "gtm",
+      "action_90d": "Design the reverse-auction protocol (problem-post + underbid window + escrow release), publish the spec, seed 10 problem posts from friendly customers, run a 90-day auction.",
+      "falsifier": "Operators refuse to underbid OR < 50 problems posted OR < 10 paid resolutions OR the underbid price floor collapses.",
+      "closest_known_archetype": null,
+      "candidate_newness": 4.6,
+      "archetype_z": 4.303488948879196,
+      "is_respin_of_known": false,
+      "composite_z": 17.552974062199727,
+      "composite_band": "+10\u03c3\u201320\u03c3",
+      "system_action": "adversarial_proof",
+      "wall_breach": false,
+      "overall_verdict": "ESCALATE",
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 17.834484016847366,
+          "negative_z": -4.615645581133875,
+          "repaired_z": 30.270858418492196,
+          "band": "\u2265+30\u03c3",
+          "verifier": "ESCALATE",
+          "reason": "certified_z = 30.27 hit the \u00b130\u03c3 wall"
+        },
+        "invention": {
+          "positive_z": 10.757931907506256,
+          "negative_z": -6.7854677554655245,
+          "repaired_z": 11.658378262085037,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 8.792222988244838,
+          "negative_z": -6.4131851262259705,
+          "repaired_z": 10.729685506021942,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "9d0b3d701e4b70a68a00084e784b23a4",
+        "invention_repaired": "fe740391bfb3e9f361cbd5bab0fb08e8",
+        "proof_repaired": "9df98efc2186245aa580f8b8a62755d8"
+      }
+    }
+  ],
+  "reference_population_hash": "3b5b14a1308c0224",
+  "alternate_population_hash": "3eb54ea4f5909354",
+  "n_total_ideas": 9,
+  "n_survivors": 9
+}

@@ -1,0 +1,610 @@
+{
+  "brief": "Operator-first GTM with doctrine-yield primitives and independent verification",
+  "n_rounds_run": 2,
+  "converged": false,
+  "wall_seconds": 90.86659026145935,
+  "rounds": [
+    {
+      "round": 0,
+      "candidates": [
+        "escrow (independent_verification)",
+        "verifier + bond + reputation (independent_verification)",
+        "counterfactual (independent_verification)",
+        "smart-contract + verifier + escrow (financial_primitive)",
+        "bond (yield_curve)",
+        "reputation + counterfactual (portable_reputation)",
+        "negative-pick + verifier (portable_reputation)",
+        "auction (inverted_market)",
+        "attribution + escrow + negative-pick (inverted_market)"
+      ],
+      "survivors": [
+        "verifier + bond + reputation (independent_verification)",
+        "smart-contract + verifier + escrow (financial_primitive)",
+        "attribution + escrow + negative-pick (inverted_market)",
+        "reputation + counterfactual (portable_reputation)",
+        "negative-pick + verifier (portable_reputation)",
+        "escrow (independent_verification)",
+        "counterfactual (independent_verification)",
+        "bond (yield_curve)",
+        "auction (inverted_market)"
+      ],
+      "composite_z": [
+        0.8961212719547417,
+        0.8961212719547417,
+        0.8961212719547417,
+        0.7509871216629002,
+        0.7509871216629002,
+        0.6058529713710588,
+        0.6058529713710588,
+        0.6058529713710588,
+        0.6058529713710588
+      ]
+    },
+    {
+      "round": 1,
+      "candidates": [
+        "escrow (independent_verification)",
+        "verifier + smart-contract (independent_verification)",
+        "counterfactual + negative-pick + auction (independent_verification)",
+        "smart-contract + escrow + attribution (financial_primitive)",
+        "bond + reputation (yield_curve)",
+        "reputation + smart-contract (portable_reputation)",
+        "negative-pick + verifier (portable_reputation)",
+        "auction + smart-contract + oracle (inverted_market)",
+        "attribution + escrow + counterfactual (inverted_market)"
+      ],
+      "survivors": [
+        "counterfactual + negative-pick + auction (independent_verification)",
+        "smart-contract + escrow + attribution (financial_primitive)",
+        "auction + smart-contract + oracle (inverted_market)",
+        "attribution + escrow + counterfactual (inverted_market)",
+        "verifier + smart-contract (independent_verification)",
+        "bond + reputation (yield_curve)",
+        "reputation + smart-contract (portable_reputation)",
+        "negative-pick + verifier (portable_reputation)",
+        "escrow (independent_verification)"
+      ],
+      "composite_z": [
+        0.8961212719547417,
+        0.8961212719547417,
+        0.8961212719547417,
+        0.8961212719547417,
+        0.7509871216629002,
+        0.7509871216629002,
+        0.7509871216629002,
+        0.7509871216629002,
+        0.6058529713710588
+      ]
+    }
+  ],
+  "survivors": [
+    {
+      "name": "verifier + bond + reputation (independent_verification)",
+      "owner_dept": "sales",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "b9e4c9257b61c6a2294ed1171e3b1e05",
+        "invention": "a2cadca36b4441724569f71ee60d9e20",
+        "proof": "435a2c5e3264986035809eabb60c4d04"
+      }
+    },
+    {
+      "name": "smart-contract + verifier + escrow (financial_primitive)",
+      "owner_dept": "engineering",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "556a8343bd085d781b164a2116fb2120",
+        "invention": "04352f161d94403a5395e30f83028f6f",
+        "proof": "ec025ef86d9f4743995181194f1f17ec"
+      }
+    },
+    {
+      "name": "attribution + escrow + negative-pick (inverted_market)",
+      "owner_dept": "content",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "c3be347506ed54c87a44229a1a3739b7",
+        "invention": "98bcb53f1b232b82184d024faf316622",
+        "proof": "2e5bc97f7cfc9b24df43cdbd85340683"
+      }
+    },
+    {
+      "name": "counterfactual + negative-pick + auction (independent_verification)",
+      "owner_dept": "strategy",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "add58ee2606999b24d891baccce8b5f6",
+        "invention": "06d4498e1b513bbbfc1d8476d27482ae",
+        "proof": "d1c58e70ae0a3389596949136c53bb44"
+      }
+    },
+    {
+      "name": "smart-contract + escrow + attribution (financial_primitive)",
+      "owner_dept": "engineering",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "b691830afbe8d7ea746a5bb600a457f2",
+        "invention": "53c68ee40a38e27a7b0ae6ce72758fc8",
+        "proof": "e6c4a258753f7fa517e7bfabdc6f22ee"
+      }
+    },
+    {
+      "name": "auction + smart-contract + oracle (inverted_market)",
+      "owner_dept": "gtm",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "16720586f6246701b52b4f83e43eb5ab",
+        "invention": "b1522a086e5e512ec1cbab5858297a23",
+        "proof": "a2317bceb0704236188ee7c74f985740"
+      }
+    },
+    {
+      "name": "attribution + escrow + counterfactual (inverted_market)",
+      "owner_dept": "content",
+      "composite_z": 0.8961212719547417,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 6.1606645397772,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.7402439907173175,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.3517735670387467,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 1.0213528131462764,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.631545112490426,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.0732329879993687,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "9434ec880d976163b5a448fb1da3703f",
+        "invention": "a1e1f368d3c1c1a99cbcf85461e5e589",
+        "proof": "0bd82ebf55201a8f15f5f98cf0f1ac57"
+      }
+    },
+    {
+      "name": "reputation + counterfactual (portable_reputation)",
+      "owner_dept": "strategy",
+      "composite_z": 0.7509871216629002,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.872573157957872,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.532752380020892,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.207727876129083,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.9570875018248232,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.487499421580761,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.2368785168570147,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "6cf0fbf49ad026e19a4af0d74630b8d1",
+        "invention": "07ebb3896bffed4f01c4252715ae9601",
+        "proof": "d14d9d229dce6ff7b6cc4836a5fd47ac"
+      }
+    },
+    {
+      "name": "negative-pick + verifier (portable_reputation)",
+      "owner_dept": "strategy",
+      "composite_z": 0.7509871216629002,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.872573157957872,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.532752380020892,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.207727876129083,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.9570875018248232,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.487499421580761,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.2368785168570147,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "1dda0cf203616abed20acc2503a5410a",
+        "invention": "d873d54de783cee0deaa4b84d6301c34",
+        "proof": "b91f9ce71fb1a9c098e63afb809cd79b"
+      }
+    },
+    {
+      "name": "verifier + smart-contract (independent_verification)",
+      "owner_dept": "sales",
+      "composite_z": 0.7509871216629002,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.872573157957872,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.532752380020892,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.207727876129083,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.9570875018248232,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.487499421580761,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.2368785168570147,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "116b76b391dde9db5dd8956196b34038",
+        "invention": "a1cc1c24ffadc6267ea864a3383934f1",
+        "proof": "48d870aa902b4f8b7dc57cefe4563d6f"
+      }
+    },
+    {
+      "name": "bond + reputation (yield_curve)",
+      "owner_dept": "finance",
+      "composite_z": 0.7509871216629002,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.872573157957872,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.532752380020892,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.207727876129083,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.9570875018248232,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.487499421580761,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.2368785168570147,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "37c5446d6e605299c56b082e97b8f025",
+        "invention": "90927669ee1d6533a5e5d7cf3de907d5",
+        "proof": "09ce782af0d206affe5b1165d10cca29"
+      }
+    },
+    {
+      "name": "reputation + smart-contract (portable_reputation)",
+      "owner_dept": "strategy",
+      "composite_z": 0.7509871216629002,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.872573157957872,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.532752380020892,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.207727876129083,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.9570875018248232,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.487499421580761,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.2368785168570147,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "0304b4fa030df3c608a755cd405a0b26",
+        "invention": "ca0df90b64acf2001d27dfe6b6f66783",
+        "proof": "fb4acfac152c566482ad123b428677d8"
+      }
+    },
+    {
+      "name": "escrow (independent_verification)",
+      "owner_dept": "gtm",
+      "composite_z": 0.6058529713710588,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.584481776138543,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.3252607693244665,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.063682185219418,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.8928221905033694,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.343453730671097,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.4005240457146595,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "b9d01eeb95c5ebe0b60bf63ada1b272a",
+        "invention": "e0550a145de7d8a8c1e859a9b44ae233",
+        "proof": "03734afba357802b05cd48ffea75a229"
+      }
+    },
+    {
+      "name": "counterfactual (independent_verification)",
+      "owner_dept": "strategy",
+      "composite_z": 0.6058529713710588,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.584481776138543,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.3252607693244665,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.063682185219418,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.8928221905033694,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.343453730671097,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.4005240457146595,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "83efb96f8dfb0d45c8e96f30f4028db8",
+        "invention": "5376119ae1346155565ffbdc9b8e58d6",
+        "proof": "beeb7dfb2870868963ba26b6083126d0"
+      }
+    },
+    {
+      "name": "bond (yield_curve)",
+      "owner_dept": "finance",
+      "composite_z": 0.6058529713710588,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.584481776138543,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.3252607693244665,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.063682185219418,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.8928221905033694,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.343453730671097,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.4005240457146595,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "97228e7993985b622f6117d1297c46e9",
+        "invention": "3c8c100a34a890b198470ea41bebcac7",
+        "proof": "f5b3ffab6ba67c4232c2333ad74f6f06"
+      }
+    },
+    {
+      "name": "auction (inverted_market)",
+      "owner_dept": "gtm",
+      "composite_z": 0.6058529713710588,
+      "outcomes": {
+        "opportunity": {
+          "positive_z": 5.584481776138543,
+          "negative_z": -3.699139210219802,
+          "repaired_z": 2.3252607693244665,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "invention": {
+          "positive_z": 3.063682185219418,
+          "negative_z": -4.835206022244556,
+          "repaired_z": 0.8928221905033694,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        },
+        "proof": {
+          "positive_z": 2.343453730671097,
+          "negative_z": -4.640287772825039,
+          "repaired_z": -1.4005240457146595,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "FAIL"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity": "f189204acf63b327419645a9ebee63b9",
+        "invention": "89532d27566e0aecec5db39072e443e4",
+        "proof": "f4babfbb6c7b85f57cdc1978d38094b0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "diamond": "opportunity",
+  "n_packets": 3,
+  "n_trace": 63,
+  "iqrsqpi": {
+    "positive_tail": {
+      "run_id": "iqrsqpi-083cb930",
+      "diamond": "opportunity",
+      "expedition": "positive_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "negative_tail": {
+      "run_id": "iqrsqpi-1d4cc4f4",
+      "diamond": "opportunity",
+      "expedition": "negative_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "repaired_tail": {
+      "run_id": "iqrsqpi-a958700a",
+      "diamond": "opportunity",
+      "expedition": "repaired_tail",
+      "n_stages_passed": 7,
+      "n_stages_required": 7,
+      "n_grill_cycles": 3,
+      "n_grill_required": 3,
+      "completed": true,
+      "halted_reason": "",
+      "stage_pass_flags": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "outcomes": {
+    "positive_tail": {
+      "certified_z": 20.112247271529977,
+      "band": "+20\u03c3\u201330\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "PASS",
+      "sealed_hash": "8acf025363dde1687d64c05ef6b5408c",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "mike_gated_review",
+      "wall_breach": false
+    },
+    "negative_tail": {
+      "certified_z": -2.540843127009487,
+      "band": "-0\u03c3\u20133\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "WEAK",
+      "sealed_hash": "154456cd0dfb5dfb2998329c2c671ff3",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "reject",
+      "wall_breach": false
+    },
+    "repaired_tail": {
+      "certified_z": 12.561407387675542,
+      "band": "+10\u03c3\u201320\u03c3",
+      "pass_a": "PASS",
+      "pass_b": "PASS",
+      "pass_c": "PASS",
+      "sealed_hash": "31c91f3ad2b02e821823aa66c53aabaf",
+      "verifier_decision": "PASS",
+      "verifier_reason": "all checks passed",
+      "system_action": "adversarial_proof",
+      "wall_breach": false
+    }
+  }
+}

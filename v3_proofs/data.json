@@ -1,0 +1,301 @@
+{
+  "brief": "Operator-first GTM with doctrine-yield primitives and independent verification",
+  "corpus_size": 487,
+  "ideas_proposed": 9,
+  "n_seeds": 2,
+  "seeds": [
+    2026,
+    2043
+  ],
+  "ideas": [
+    {
+      "name": "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products",
+      "composite_z_median": 6.427603233942126,
+      "composite_z_variance": 0.1414672574748086,
+      "composite_z_seeds": [
+        6.569070491416934,
+        6.286135976467317
+      ],
+      "archetype_z_median": 10.350270171674534,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Negative-Pick Distribution \u2014 pay operators to *not* recommend competitors, with the option to disclose the payment",
+      "composite_z_median": 6.427603233942126,
+      "composite_z_variance": 0.1414672574748086,
+      "composite_z_seeds": [
+        6.569070491416934,
+        6.286135976467317
+      ],
+      "archetype_z_median": 10.350270171674534,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Doctrine-as-Smart-Contract \u2014 RIG publishes the doctrine as executable code that pays operators when they meet it",
+      "composite_z_median": 6.4360506402419,
+      "composite_z_variance": 0.14161435112070908,
+      "composite_z_seeds": [
+        6.577664991362609,
+        6.294436289121191
+      ],
+      "archetype_z_median": 10.38478237115934,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Anti-Adversarial Distribution \u2014 paid leads whose quality is provably not the seller's incentive",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Operator-as-Public-Good \u2014 free operators paid by visible-attribution in the output",
+      "composite_z_median": 6.2972315704458435,
+      "composite_z_variance": 0.13919711174898586,
+      "composite_z_seeds": [
+        6.43642868219483,
+        6.158034458696858
+      ],
+      "archetype_z_median": 9.817631785632987,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Reverse-Auction Doctrine \u2014 customers post a problem; operators underbid each other on the right to fix it",
+      "composite_z_median": 6.2972315704458435,
+      "composite_z_variance": 0.13919711174898586,
+      "composite_z_seeds": [
+        6.43642868219483,
+        6.158034458696858
+      ],
+      "archetype_z_median": 9.817631785632987,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Counterfactual Receipt \u2014 customers pay for the *saved* outcome, not the delivered one, with the counterfactual independently reconstructed",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Doctrine-Indexed Bond \u2014 investors fund operators against a verifiable doctrine-yield curve",
+      "composite_z_median": 6.352580884444681,
+      "composite_z_variance": 0.1401609025393462,
+      "composite_z_seeds": [
+        6.492741786984027,
+        6.2124199819053345
+      ],
+      "archetype_z_median": 10.043763511548173,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    }
+  ],
+  "survivors": [
+    {
+      "name": "Doctrine-as-Smart-Contract \u2014 RIG publishes the doctrine as executable code that pays operators when they meet it",
+      "composite_z_median": 6.4360506402419,
+      "composite_z_variance": 0.14161435112070908,
+      "composite_z_seeds": [
+        6.577664991362609,
+        6.294436289121191
+      ],
+      "archetype_z_median": 10.38478237115934,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products",
+      "composite_z_median": 6.427603233942126,
+      "composite_z_variance": 0.1414672574748086,
+      "composite_z_seeds": [
+        6.569070491416934,
+        6.286135976467317
+      ],
+      "archetype_z_median": 10.350270171674534,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Negative-Pick Distribution \u2014 pay operators to *not* recommend competitors, with the option to disclose the payment",
+      "composite_z_median": 6.427603233942126,
+      "composite_z_variance": 0.1414672574748086,
+      "composite_z_seeds": [
+        6.569070491416934,
+        6.286135976467317
+      ],
+      "archetype_z_median": 10.350270171674534,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Anti-Adversarial Distribution \u2014 paid leads whose quality is provably not the seller's incentive",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Counterfactual Receipt \u2014 customers pay for the *saved* outcome, not the delivered one, with the counterfactual independently reconstructed",
+      "composite_z_median": 6.425865648997081,
+      "composite_z_variance": 0.14143700112208357,
+      "composite_z_seeds": [
+        6.5673026501191645,
+        6.284428647874997
+      ],
+      "archetype_z_median": 10.343171202343939,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Doctrine-Indexed Bond \u2014 investors fund operators against a verifiable doctrine-yield curve",
+      "composite_z_median": 6.352580884444681,
+      "composite_z_variance": 0.1401609025393462,
+      "composite_z_seeds": [
+        6.492741786984027,
+        6.2124199819053345
+      ],
+      "archetype_z_median": 10.043763511548173,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Operator-as-Public-Good \u2014 free operators paid by visible-attribution in the output",
+      "composite_z_median": 6.2972315704458435,
+      "composite_z_variance": 0.13919711174898586,
+      "composite_z_seeds": [
+        6.43642868219483,
+        6.158034458696858
+      ],
+      "archetype_z_median": 9.817631785632987,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    },
+    {
+      "name": "Reverse-Auction Doctrine \u2014 customers post a problem; operators underbid each other on the right to fix it",
+      "composite_z_median": 6.2972315704458435,
+      "composite_z_variance": 0.13919711174898586,
+      "composite_z_seeds": [
+        6.43642868219483,
+        6.158034458696858
+      ],
+      "archetype_z_median": 9.817631785632987,
+      "is_respin_of_known": false,
+      "high_variance_flag": false,
+      "wall_breach_count": 0
+    }
+  ],
+  "dropped": [],
+  "hybrids": [
+    {
+      "name": "Hybrid [financial_primitive + portable_reputation] \u2014 Doctrine-as-Smart-Contract \u00d7 Operator-Reputation Primitive",
+      "parents": [
+        "Doctrine-as-Smart-Contract \u2014 RIG publishes the doctrine as executable code that pays operators when they meet it",
+        "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products"
+      ],
+      "parent_families": [
+        "financial_primitive",
+        "portable_reputation"
+      ],
+      "newness": {
+        "anti_orthodoxy": 5.631196250040854,
+        "mechanism_originality": 1.7,
+        "prior_art_distance": 5.314678899082569
+      }
+    },
+    {
+      "name": "Hybrid [portable_reputation + independent_verification] \u2014 Operator-Reputation Primitive \u00d7 Outcome-Escrow",
+      "parents": [
+        "Operator-Reputation Primitive \u2014 a portable, signed-receipt reputation object that follows the operator across products",
+        "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified"
+      ],
+      "parent_families": [
+        "portable_reputation",
+        "independent_verification"
+      ],
+      "newness": {
+        "anti_orthodoxy": 5.625323945917823,
+        "mechanism_originality": 1.7,
+        "prior_art_distance": 5.395238095238096
+      }
+    },
+    {
+      "name": "Hybrid [portable_reputation + independent_verification] \u2014 Negative-Pick Distribution \u00d7 Outcome-Escrow",
+      "parents": [
+        "Negative-Pick Distribution \u2014 pay operators to *not* recommend competitors, with the option to disclose the payment",
+        "Outcome-Escrow \u2014 customer pays only when the operator's claim is independently verified"
+      ],
+      "parent_families": [
+        "portable_reputation",
+        "independent_verification"
+      ],
+      "newness": {
+        "anti_orthodoxy": 5.625323945917823,
+        "mechanism_originality": 1.7,
+        "prior_art_distance": 5.395238095238096
+      }
+    }
+  ],
+  "memory_os_writes": [],
+  "notes": "v3 ensemble over 2 seeds, 9 survivors, 0 dropped, 3 hybrids from Collision Engine"
+}

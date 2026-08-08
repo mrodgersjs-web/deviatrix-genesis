@@ -1,0 +1,52 @@
+========================================================================
+DEVIATRIX GENESIS — smoke run
+========================================================================
+run_id    : deviatrix-2ed41e7f
+started   : 2026-08-07T02:16:23.265352+00:00
+finished  : 2026-08-07T02:16:23.925762+00:00
+packets   : 9
+
+Doctrine run totals:
+  diamonds                      : 3
+  expeditions_per_diamond       : 3
+  total_expeditions             : 9
+  iqrsqpi_stages                : 7
+  outer_stages                  : 63
+  min_grill_per_expedition      : 3
+  min_total_grill               : 27
+
+Verifier summary:
+  verifier_id                   : verifier-smoke
+  n_reports                     : 9
+  n_pass                        : 8
+  n_fail                        : 0
+  n_mutate                      : 1
+  n_escalate                    : 0
+  wall_breaches                 : []
+
+--- opportunity ---
+  n_packets=3  n_trace=63
+  positive_tail      z=   20.51  band=+20σ–30σ            verdict=PASS      action=mike_gated_review
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=c34ff1136aa66980…
+  negative_tail      z=   -2.47  band=-0σ–3σ              verdict=PASS      action=reject
+                     pass_a=PASS    pass_b=PASS    pass_c=WEAK    sealed=0120c38b90d8f53f…
+  repaired_tail      z=   16.63  band=+10σ–20σ            verdict=PASS      action=adversarial_proof
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=facf1f14a9baf70d…
+
+--- invention ---
+  n_packets=3  n_trace=63
+  positive_tail      z=   12.09  band=+10σ–20σ            verdict=PASS      action=adversarial_proof
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=a8f2e7adcabbd33b…
+  negative_tail      z=   -2.47  band=-0σ–3σ              verdict=MUTATE    action=reject
+                     pass_a=PASS    pass_b=PASS    pass_c=WEAK    sealed=e94cd77cc367c00f…
+  repaired_tail      z=    8.68  band=+5σ–10σ             verdict=PASS      action=deep_review
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=eb7267483d74270b…
+
+--- proof ---
+  n_packets=3  n_trace=63
+  positive_tail      z=   12.52  band=+10σ–20σ            verdict=PASS      action=adversarial_proof
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=f7b214e1e55d9991…
+  negative_tail      z=   -2.79  band=-0σ–3σ              verdict=PASS      action=reject
+                     pass_a=PASS    pass_b=PASS    pass_c=WEAK    sealed=b6e95282f9389025…
+  repaired_tail      z=    9.61  band=+5σ–10σ             verdict=PASS      action=deep_review
+                     pass_a=PASS    pass_b=PASS    pass_c=PASS    sealed=b9ecbf260d7b9a72…

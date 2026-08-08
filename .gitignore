@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.venv/
+ENV/
+credentials/
+
+# RIG Memory OS
+rig-memory-os/app/src/rig_memory_os/__pycache__/

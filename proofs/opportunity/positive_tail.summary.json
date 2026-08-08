@@ -1,0 +1,12 @@
+{
+  "certified_z": 20.112247271529977,
+  "band": "+20\u03c3\u201330\u03c3",
+  "pass_a": "PASS",
+  "pass_b": "PASS",
+  "pass_c": "PASS",
+  "sealed_hash": "8acf025363dde1687d64c05ef6b5408c",
+  "verifier_decision": "PASS",
+  "verifier_reason": "all checks passed",
+  "system_action": "mike_gated_review",
+  "wall_breach": false
+}

@@ -1,0 +1,382 @@
+{
+  "verifier_summary": {
+    "verifier_id": "verifier-rig-gtm",
+    "n_reports": 81,
+    "n_pass": 48,
+    "n_fail": 18,
+    "n_mutate": 15,
+    "n_escalate": 0,
+    "wall_breaches": []
+  },
+  "ideas": [
+    {
+      "name": "Doctrine-to-Deal \u2014 paid assessment \u2192 retainer funnel",
+      "owner_dept": "gtm",
+      "action_90d": "Build the doctrine assessment (10-minute intake, 30-minute output), publish it as a free funnel on the public site, gate the deliverable behind a $1K deposit that converts to a retainer.",
+      "falsifier": "< 8% assessment-to-retainer conversion over 90 days OR assessment NPS < 7 OR < $50K closed-won from assessment-sourced leads.",
+      "composite_z": 6.695180976478004,
+      "composite_band": "+5\u03c3\u201310\u03c3",
+      "system_action": "deep_review",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 25.0947487709936,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": 20.767353835674854,
+          "band": "+20\u03c3\u201330\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "d1a5c1835ca1f614c9363d7980a7f429",
+        "invention_repaired": "0d598c87bc696d1ef6fcfebe760df80f",
+        "proof_repaired": "241a7fc0e653ee81fe928c92c9988574"
+      }
+    },
+    {
+      "name": "Operator-as-Service (OaaS) \u2014 paid Retainer for an Operator Agent",
+      "owner_dept": "gtm",
+      "action_90d": "Define the OaaS offering, package 3 pricing tiers ($5K/$12K/$25K/mo), publish the doctrine whitepaper, and recruit 5 operator-design-partner clients before opening the funnel.",
+      "falsifier": "An incumbent copy-cat offering a 'fractional CAIO' within 60 days of announcement, OR a churn rate > 8% in the first 90 days, OR zero paid retainers signed by week 6.",
+      "composite_z": 6.516721626220598,
+      "composite_band": "+5\u03c3\u201310\u03c3",
+      "system_action": "deep_review",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 24.472139177885637,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": 20.231975784902634,
+          "band": "+20\u03c3\u201330\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "0b99930311af2b10ad9720f1ba59a248",
+        "invention_repaired": "095d461ec4530fb597d19d6656c95798",
+        "proof_repaired": "5ee9f233d701ab88581af5e11174b6dd"
+      }
+    },
+    {
+      "name": "RIG-OS Marketplace \u2014 operators ship modules; RIG takes 30%",
+      "owner_dept": "partnerships",
+      "action_90d": "Stand up the marketplace scaffold (Stripe Connect, listing page, module submission form), recruit 5 anchor operators with seed modules, and run a 2-week launch campaign.",
+      "falsifier": "< 5 paying modules in 90 days OR < 10 active operators OR < $25K marketplace GMV in the first quarter.",
+      "composite_z": 5.750868616441789,
+      "composite_band": "+5\u03c3\u201310\u03c3",
+      "system_action": "deep_review",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 21.800228571290212,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": 17.934416755566208,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "7e18bb1c148b5c3081f6ec9df3ee0e40",
+        "invention_repaired": "8c4ac49e6b9d6f7840b7488dc605f8ca",
+        "proof_repaired": "de4bccba1ef2af06823c4f8c4c12effb"
+      }
+    },
+    {
+      "name": "Operator Studio \u2014 agency services; ship the work, name the doctrine",
+      "owner_dept": "sales",
+      "action_90d": "Define 3 service packages (Build / Embed / Certify), publish the doctrine-as-process, sign 3 anchor clients at $15K-$50K each, and ship every engagement with a public case file.",
+      "falsifier": "< 2 shipped operator engagements in 90 days OR < $40K services revenue OR zero public artifacts from the engagements.",
+      "composite_z": 3.8171365236164125,
+      "composite_band": "+3\u03c3\u20135\u03c3",
+      "system_action": "collision",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 15.023551398053698,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": 11.776793089551765,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "9f282458f36c382d96043e5b3bf8f7ea",
+        "invention_repaired": "db99945fe797214c941eba7b4bc69283",
+        "proof_repaired": "1c9094c2ccd2c8fd9293bdec6b7036ae"
+      }
+    },
+    {
+      "name": "Public Audit Receipt \u2014 anonymous before/after of customer systems",
+      "owner_dept": "proof",
+      "action_90d": "Recruit 3 customers willing to publish before/after audits, redact PII, publish the first 3 case files, and track downstream traffic-to-paid conversion.",
+      "falsifier": "Zero customers consent to anonymous before/after publication OR the published audit fails independent review.",
+      "composite_z": 3.693900335053432,
+      "composite_band": "+3\u03c3\u20135\u03c3",
+      "system_action": "collision",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 14.593604560823243,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": 11.407084523862823,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "e38325e851d6af4aaaa6b3bbae67586a",
+        "invention_repaired": "c357f9135a528a8d0526956a8dc12328",
+        "proof_repaired": "ec799b8e3741e7f5be052565db5608ce"
+      }
+    },
+    {
+      "name": "Operator's Weekly \u2014 paid newsletter as the public GTM front door",
+      "owner_dept": "content",
+      "action_90d": "Lock a 12-issue Operator's Weekly calendar, publish the first 4 free issues, stand up a paid tier at $20/mo with 1 anchor offer per issue, and wire the conversion telemetry to the GTM lane.",
+      "falsifier": "Open rate < 35% sustained over 90 days OR <2% conversion to paid OR < 3 paying customers from the newsletter in the first quarter.",
+      "composite_z": 3.5706641464904494,
+      "composite_band": "+3\u03c3\u20135\u03c3",
+      "system_action": "collision",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 0.0,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 0.49838387116356164,
+          "band": "0\u03c3\u20133\u03c3",
+          "verifier": "MUTATE",
+          "reason": "structural_distance 0.0 < floor 5.0"
+        },
+        "proof": {
+          "positive_z": 14.163657723592786,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": 11.037375958173875,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "61e7974b44007efe2a55418ad4158180",
+        "invention_repaired": "b9fc975653b047d8c93fc94836ba4549",
+        "proof_repaired": "877232ea9e9e34f1a5dc5debd77162f5"
+      }
+    },
+    {
+      "name": "Operator Cohort \u2014 paid group-program as anti-course",
+      "owner_dept": "content",
+      "action_90d": "Define the 6-week cohort curriculum, recruit 1 anchor operator, open enrollment at $1.5K/seat with a 30-seat cap, run the first cohort live, and capture completion data for the proof-diamond.",
+      "falsifier": "< 25 paid seats in the first cohort OR < 60% completion OR < $40K cohort revenue.",
+      "composite_z": 3.0260261044296155,
+      "composite_band": "+3\u03c3\u20135\u03c3",
+      "system_action": "collision",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 16.227402542298975,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 11.082040480559337,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "f90648023322f4e502594feb1034c918",
+        "invention_repaired": "226d246e69d774bd92afbe054718ab67",
+        "proof_repaired": "c0afe9571256025e8aa8ab59d1b2985e"
+      }
+    },
+    {
+      "name": "Deviation-Engine-as-a-Service \u2014 paid access to \u00b130\u03c3 engine API",
+      "owner_dept": "sales",
+      "action_90d": "Ship a sealed Deviation-Engine API v1 (3 endpoints, 1 SDK), publish the open evaluation harness, and on-board 10 paid developers in a private beta.",
+      "falsifier": "An open-source recreation of the engine within 90 days OR a competitor ships an identical API surface for <$200/mo, OR no paying developer within 60 days.",
+      "composite_z": 2.98861256195303,
+      "composite_band": "0\u03c3\u20133\u03c3",
+      "system_action": "anti_median",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 16.055423807406793,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 10.969799853129581,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "954747e30926648a99ddb36c9fa18e4f",
+        "invention_repaired": "9f571563a7ca153fdc339386c83c7c57",
+        "proof_repaired": "01769afc0aa6d411b187392996e2738b"
+      }
+    },
+    {
+      "name": "Deviation-Engine Certification \u2014 paid exam; certified = employable",
+      "owner_dept": "sales",
+      "action_90d": "Design the 3-hour online exam (40 multiple-choice + 2 practical), publish the syllabus, recruit 5 employer partners willing to interview candidates, and open paid enrollment at $250/candidate.",
+      "falsifier": "< 100 paid candidates in 90 days OR < 60% pass rate OR no employer willing to interview a certified candidate.",
+      "composite_z": 2.9699057907147384,
+      "composite_band": "0\u03c3\u20133\u03c3",
+      "system_action": "anti_median",
+      "wall_breach": false,
+      "diamonds": {
+        "opportunity": {
+          "positive_z": 0.0,
+          "negative_z": -1.8301657822272979,
+          "repaired_z": -0.8237673898660886,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "invention": {
+          "positive_z": 15.969434439960704,
+          "negative_z": -2.757792772453547,
+          "repaired_z": 10.913679539414705,
+          "band": "+10\u03c3\u201320\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        },
+        "proof": {
+          "positive_z": 0.0,
+          "negative_z": -2.5986371425773918,
+          "repaired_z": -1.1801947774044028,
+          "band": "-0\u03c3\u20133\u03c3",
+          "verifier": "PASS",
+          "reason": "all checks passed"
+        }
+      },
+      "sealed_hashes": {
+        "opportunity_repaired": "256eb99d89828b9d389d65cb86063a41",
+        "invention_repaired": "f9e3ba3b8cbac275fa3e561e39ca98d4",
+        "proof_repaired": "4e01c70dbb6ba6518a48270a0eb88d86"
+      }
+    }
+  ]
+}
