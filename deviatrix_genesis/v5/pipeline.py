@@ -62,30 +62,45 @@ async def _run_one_diamond_async(
     from ..diamonds import DiamondHarness
     harness = DiamondHarness(diamond=dk)
 
+    bus.emit("diamond_start", "pipeline", diamond=diamond_kind, seed=seed)
+
     # Run positive + negative in parallel via asyncio.to_thread
     pos_exp = conductor._positive_expedition(harness, dk)
     neg_exp = conductor._negative_expedition(harness, dk)
-    pos_task = asyncio.to_thread(pos_exp.run, claim)
-    neg_task = asyncio.to_thread(neg_exp.run, claim)
 
-    # Emit telemetry
-    bus.emit("diamond_start", "pipeline", diamond=diamond_kind, seed=seed)
-
-    pos_outcome, neg_outcome = await asyncio.gather(pos_task, neg_task)
-
-    bus.emit("expedition_complete", "pipeline",
+    bus.emit("expedition_start", "pipeline",
              diamond=diamond_kind, kind="positive", seed=seed)
-    bus.emit("expedition_complete", "pipeline",
+    bus.emit("expedition_start", "pipeline",
              diamond=diamond_kind, kind="negative", seed=seed)
+
+    pos_outcome, neg_outcome = await asyncio.gather(
+        asyncio.to_thread(pos_exp.run, claim),
+        asyncio.to_thread(neg_exp.run, claim),
+    )
+
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="positive", seed=seed,
+             z=pos_outcome.certified_z, band=pos_outcome.band,
+             pass_a=pos_outcome.pass_a_status, pass_b=pos_outcome.pass_b_status,
+             pass_c=pos_outcome.pass_c_status)
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="negative", seed=seed,
+             z=neg_outcome.certified_z, band=neg_outcome.band,
+             pass_a=neg_outcome.pass_a_status, pass_b=neg_outcome.pass_b_status,
+             pass_c=neg_outcome.pass_c_status)
 
     # Repaired depends on both outcomes — run after they complete
     rep_exp = conductor._repaired_expedition(
         harness, dk, pos_outcome=pos_outcome, neg_outcome=neg_outcome
     )
-    rep_outcome = await asyncio.to_thread(rep_exp.run, claim)
-
-    bus.emit("expedition_complete", "pipeline",
+    bus.emit("expedition_start", "pipeline",
              diamond=diamond_kind, kind="repaired", seed=seed)
+    rep_outcome = await asyncio.to_thread(rep_exp.run, claim)
+    bus.emit("expedition_complete", "pipeline",
+             diamond=diamond_kind, kind="repaired", seed=seed,
+             z=rep_outcome.certified_z, band=rep_outcome.band,
+             pass_a=rep_outcome.pass_a_status, pass_b=rep_outcome.pass_b_status,
+             pass_c=rep_outcome.pass_c_status)
     bus.emit("diamond_complete", "pipeline",
              diamond=diamond_kind, seed=seed,
              wall_ms=(time.monotonic() - t0) * 1000)

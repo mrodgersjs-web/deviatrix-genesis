@@ -41,6 +41,7 @@ class Dashboard:
         self._memory_writes: int = 0
         self._memory_errors: int = 0
         self._hybrids: int = 0
+        self._last_expeditions: list[dict[str, Any]] = []
 
     def start(self, total_expeditions: int = 0) -> None:
         self._total_expeditions = total_expeditions
@@ -65,6 +66,16 @@ class Dashboard:
             })
         elif evt.event_type == "expedition_complete":
             self._expedition_count += 1
+            z = evt.payload.get("z", 0.0)
+            band = evt.payload.get("band", "")
+            kind = evt.payload.get("kind", "")
+            diamond = evt.payload.get("diamond", "")
+            self._last_expeditions.append({
+                "diamond": diamond, "kind": kind, "z": z, "band": band,
+            })
+            # Keep only last 9
+            if len(self._last_expeditions) > 9:
+                self._last_expeditions = self._last_expeditions[-9:]
         elif evt.event_type == "memory_write":
             self._memory_writes += 1
         elif evt.event_type == "memory_error":
@@ -109,6 +120,13 @@ class Dashboard:
         # Fusion
         if self._hybrids:
             lines.append(f"  Cross-brief hybrids: {self._hybrids}")
+
+        # Last expeditions
+        if self._last_expeditions:
+            lines.append("  Last expeditions:")
+            for ep in self._last_expeditions:
+                z_str = f"{ep['z']:+.2f}σ"
+                lines.append(f"    {ep['diamond']:>12} {ep['kind']:<10} z={z_str:>10}  {ep['band']}")
 
         lines.append("=" * 60)
         return "\n".join(lines)
