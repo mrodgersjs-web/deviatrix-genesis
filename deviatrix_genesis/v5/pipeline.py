@@ -239,6 +239,7 @@ def run_v5_pipeline(
     from ..verifier import IndependentVerifier
     from ..v4.embeddings import build_embedding_index, score_with_embeddings
     from ..v4.formula_emitter import emit_formulas
+    from .llm_formulas import generate_formulas_llm, LLM_GENERATION_AVAILABLE
 
     corpus = load_corpus()
     bus.emit("corpus_loaded", "pipeline", count=len(corpus))
@@ -247,6 +248,11 @@ def run_v5_pipeline(
     corpus_texts = [e.text for e in corpus]
     embedding_index = build_embedding_index(corpus_texts)
     bus.emit("embeddings_built", "pipeline", index_size=len(corpus_texts))
+
+    # Check if LLM formula generation is available
+    use_llm = LLM_GENERATION_AVAILABLE()
+    if use_llm:
+        bus.emit("llm_available", "pipeline", provider="auto")
 
     verifier = IndependentVerifier(verifier_id="v5-verifier")
 
@@ -275,8 +281,26 @@ def run_v5_pipeline(
                     s.get("prior_art_distance_new", 0.0),
                 )
 
-        # Emit formulas from brief (with survivor feedback in round 2+)
-        emitted = emit_formulas(brief, n=n_ideas, corpus_newness=corpus_newness)
+        # Emit formulas — try LLM first, fall back to template emitter
+        if use_llm:
+            llm_formulas = generate_formulas_llm(brief, n=n_ideas)
+            if llm_formulas:
+                bus.emit("llm_formulas", "pipeline", count=len(llm_formulas))
+                # Convert LLMFormula to the format the pipeline expects
+                emitted = []
+                for lf in llm_formulas:
+                    from ..v4.formula_emitter import EmittedFormula
+                    emitted.append(EmittedFormula(
+                        name=lf.name, formula=lf.formula, falsifier=lf.falsifier,
+                        action_90d="deep_review", owner_dept="strategy",
+                        mechanism_family=lf.mechanism_family,
+                        anti_orthodoxy_new=0.0, mechanism_originality_new=0.0,
+                        prior_art_distance_new=0.0, primitives=lf.primitives,
+                    ))
+            else:
+                emitted = emit_formulas(brief, n=n_ideas, corpus_newness=corpus_newness)
+        else:
+            emitted = emit_formulas(brief, n=n_ideas, corpus_newness=corpus_newness)
 
         # Convert to GTMIdea for the conductor + score with embeddings
         ideas: list[GTMIdea] = []
@@ -408,6 +432,16 @@ def run_v5_pipeline(
         out.mkdir(parents=True, exist_ok=True)
         (out / "data.json").write_text(json.dumps(result, indent=2, default=str))
         (out / "REPORT.md").write_text(render_v5_report(result))
+
+    # Record to persistent history
+    try:
+        from .run_history import RunHistory
+        history = RunHistory()
+        run_id = history.record_run(result)
+        result["run_id"] = run_id
+        bus.emit("run_recorded", "pipeline", run_id=run_id)
+    except Exception:
+        pass  # non-fatal
 
     if show_dashboard:
         print(dashboard.render())

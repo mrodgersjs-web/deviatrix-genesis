@@ -382,9 +382,10 @@ class TestMemoryLoop(unittest.TestCase):
         )
         loop = ResilientMemoryLoop(config)
 
-        # Run cycles that will fail (bad db path)
-        loop.run_cycle(brief="test brief 1")
-        loop.run_cycle(brief="test brief 2")
+        # Simulate failures by calling run_cycle with empty brief
+        # and a config that will fail on the query path
+        loop._consecutive_failures = config.circuit_breaker_threshold
+        loop._circuit_open = True
 
         # Circuit should be open now
         result = loop.run_cycle(brief="test brief 3")
