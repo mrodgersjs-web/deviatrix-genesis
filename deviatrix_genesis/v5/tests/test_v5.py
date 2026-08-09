@@ -548,5 +548,169 @@ class TestMultiBrief(unittest.TestCase):
         self.assertEqual(len(result["briefs"]), 2)
 
 
+class TestDiversity(unittest.TestCase):
+
+    def test_diverse_population_round1(self):
+        from deviatrix_genesis.v5.diversity import diverse_population, population_entropy
+
+        pop = diverse_population(size=500, seed=42, round_num=1)
+        self.assertEqual(len(pop), 500)
+        ent = population_entropy(pop)
+        self.assertGreater(ent, 2.0)  # reasonable entropy
+
+    def test_diverse_population_round2(self):
+        from deviatrix_genesis.v5.diversity import diverse_population
+
+        pop = diverse_population(size=500, seed=42, round_num=2)
+        self.assertEqual(len(pop), 500)
+
+    def test_diverse_population_with_survivors(self):
+        from deviatrix_genesis.v5.diversity import diverse_population
+
+        survivors = [{"composite_z": 5.0}, {"composite_z": -3.0}]
+        pop = diverse_population(size=500, seed=42, round_num=2, survivors=survivors)
+        self.assertEqual(len(pop), 500)
+
+
+class TestPareto(unittest.TestCase):
+
+    def test_empty_input(self):
+        from deviatrix_genesis.v5.pareto import pareto_frontier
+
+        result = pareto_frontier([])
+        self.assertEqual(result, [])
+
+    def test_single_survivor(self):
+        from deviatrix_genesis.v5.pareto import pareto_frontier
+
+        result = pareto_frontier([{"name": "a", "composite_z": 5.0, "mechanism_family": "financial"}])
+        self.assertEqual(len(result), 1)
+
+    def test_dominance(self):
+        from deviatrix_genesis.v5.pareto import ParetoPoint
+
+        a = ParetoPoint("a", {"x": 5.0, "y": 3.0}, {})
+        b = ParetoPoint("b", {"x": 3.0, "y": 1.0}, {})
+        self.assertTrue(a.dominates(b))
+        self.assertFalse(b.dominates(a))
+
+
+class TestProvenance(unittest.TestCase):
+
+    def test_chain_verifies(self):
+        from deviatrix_genesis.v5.provenance import ProvenanceChain
+
+        chain = ProvenanceChain()
+        chain.add_step("brief", {"text": "test"})
+        chain.add_step("formula", {"expr": "x**2"})
+        self.assertTrue(chain.verify())
+        self.assertEqual(chain.length, 2)
+
+    def test_chain_tamper_detected(self):
+        from deviatrix_genesis.v5.provenance import ProvenanceChain
+
+        chain = ProvenanceChain()
+        chain.add_step("brief", {"text": "test"})
+        chain._steps[0].data_hash = "tampered"
+        self.assertFalse(chain.verify())
+
+
+class TestAnomaly(unittest.TestCase):
+
+    def test_no_anomalies_on_normal_values(self):
+        from deviatrix_genesis.v5.anomaly import AnomalyDetector
+
+        det = AnomalyDetector()
+        for z in [1.0, 3.0, 2.0, 4.0, 1.5]:
+            det.feed(z)
+        self.assertEqual(len(det.alerts()), 0)
+
+    def test_sudden_jump_detected(self):
+        from deviatrix_genesis.v5.anomaly import AnomalyDetector
+
+        det = AnomalyDetector(jump_threshold=5.0)
+        det.feed(1.0)
+        anomalies = det.feed(15.0)
+        self.assertTrue(any(a.kind == "sudden_jump" for a in anomalies))
+
+    def test_wall_proximity_detected(self):
+        from deviatrix_genesis.v5.anomaly import AnomalyDetector
+
+        det = AnomalyDetector()
+        anomalies = det.feed(28.5)
+        self.assertTrue(any(a.kind == "wall_proximity" for a in anomalies))
+
+    def test_clustering_detected(self):
+        from deviatrix_genesis.v5.anomaly import AnomalyDetector
+
+        det = AnomalyDetector(cluster_threshold=1.0)
+        for z in [5.0, 5.1, 5.05, 5.08, 5.02]:
+            anomalies = det.feed(z)
+        self.assertTrue(any(a.kind == "clustering" for a in anomalies))
+
+
+class TestExports(unittest.TestCase):
+
+    def test_markdown_export(self):
+        from deviatrix_genesis.v5.exports import ReportExporter
+
+        result = {
+            "brief": "test", "seeds": [2026], "n_rounds": 2, "wall_clock_s": 1.5,
+            "n_packets": 18, "survivors": [{"name": "idea1", "composite_z": 5.0, "band": "+5σ–10σ"}],
+            "dropped": [], "hybrids": [], "quality": {"total_expeditions": 9, "pass_rate_pct": 88.9,
+            "wall_breaches": 0, "z_mean": 3.0, "z_median": 2.5, "z_stdev": 1.5, "z_min": -1.0, "z_max": 8.0},
+        }
+        exp = ReportExporter(result)
+        md = exp.to_markdown()
+        self.assertIn("idea1", md)
+        self.assertIn("Quality Metrics", md)
+
+    def test_summary_export(self):
+        from deviatrix_genesis.v5.exports import ReportExporter
+
+        result = {"survivors": [{"composite_z": 5.0}], "n_rounds": 2, "wall_clock_s": 1.5}
+        exp = ReportExporter(result)
+        self.assertIn("1 survivors", exp.to_summary())
+
+    def test_csv_export(self):
+        from deviatrix_genesis.v5.exports import ReportExporter
+
+        result = {"survivors": [{"name": "a", "composite_z": 5.0, "band": "+5σ–10σ", "mechanism_family": "fin", "formula": "x+1"}]}
+        exp = ReportExporter(result)
+        csv = exp.to_csv()
+        self.assertIn("a", csv)
+        self.assertIn("name", csv)
+
+
+class TestHealer(unittest.TestCase):
+
+    def test_healer_returns_result(self):
+        from deviatrix_genesis.v5.healer import HealingPipeline
+
+        hp = HealingPipeline(max_retries=1, base_seed=42)
+        result = hp.run_with_healing(brief="test", n_ideas=2, max_rounds=1)
+        self.assertIn("healing_attempts", result)
+
+
+class TestHypotheses(unittest.TestCase):
+
+    def test_generate_hypotheses(self):
+        from deviatrix_genesis.v5.hypotheses import HypothesisGenerator
+
+        gen = HypothesisGenerator()
+        survivors = [{"name": "idea1", "composite_z": 5.0, "formula": "x**2", "mechanism_family": "financial"}]
+        hyps = gen.generate(survivors)
+        self.assertEqual(len(hyps), 1)
+        self.assertIn("idea1", hyps[0].statement)
+
+    def test_report_generation(self):
+        from deviatrix_genesis.v5.hypotheses import HypothesisGenerator
+
+        gen = HypothesisGenerator()
+        hyps = gen.generate([{"name": "a", "composite_z": 3.0, "formula": "x", "mechanism_family": "fin"}])
+        report = gen.generate_report(hyps)
+        self.assertIn("Hypothesis Report", report)
+
+
 if __name__ == "__main__":
     unittest.main()
