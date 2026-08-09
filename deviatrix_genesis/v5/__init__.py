@@ -36,4 +36,6 @@ __all__ = [
     "redteam", "prime_agent", "memory_loop_cli",
     "streaming", "diversity", "pareto", "hypotheses", "causal",
     "healer", "provenance", "ab_testing", "anomaly", "exports",
+    "vdj", "snapshots", "certification", "capsules", "canaries",
+    "proof_stream", "axioms", "tolerance", "provenance_audit", "contention",
 ]
