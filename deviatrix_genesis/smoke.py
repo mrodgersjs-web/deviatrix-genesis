@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from deviatrix_genesis.conductors import DeviatrixConductor, EXPECTED_RUN_TOTALS
+from deviatrix_genesis.conductors import DeviatrixConductor  # noqa: E402
 
 
 def smoke(

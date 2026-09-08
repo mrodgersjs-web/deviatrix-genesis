@@ -19,10 +19,9 @@ Output: every survivor from every round, deduplicated, ranked.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
-from ..v3.collision import fuse_survivors, HybridIdea
 from ..v3.proposer import GTMIdea
 from .formula_emitter import EmittedFormula, PRIMITIVE_VOCAB, emit_formulas
 from .parallel import run_idea_parallel

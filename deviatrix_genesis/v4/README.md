@@ -38,7 +38,7 @@ for the actual run output.
 ## Run it
 
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 
 # Default: 9 candidates × 3 rounds × real RIG substrate
 PYTHONPATH=. python3 -u deviatrix_genesis/v4/smoke.py --out ./v4_proofs

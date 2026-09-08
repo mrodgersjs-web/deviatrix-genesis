@@ -125,6 +125,8 @@ def main() -> None:
         print(json.dumps(capabilities(), indent=2))
         return
 
+    from .server import start_server
+
     start_server()
 
 

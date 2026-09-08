@@ -16,7 +16,6 @@ Usage::
 
 from __future__ import annotations
 
-import asyncio
 import time
 from typing import Any, Generator
 
@@ -38,17 +37,12 @@ def stream_pipeline(
         seeds = [2026]
 
     from ..v3.corpus_loader import load_corpus
-    from ..v3.proposer import propose_from_brief
     from ..v4.formula_emitter import emit_formulas
     from ..v4.embeddings import build_embedding_index, score_with_embeddings
-    from ..verifier import IndependentVerifier
-    from .telemetry import EventBus
 
-    bus = EventBus()
     corpus = load_corpus()
     corpus_texts = [e.text for e in corpus]
     embedding_index = build_embedding_index(corpus_texts)
-    verifier = IndependentVerifier(verifier_id="stream-verifier")
 
     yield {"type": "corpus_loaded", "count": len(corpus)}
 

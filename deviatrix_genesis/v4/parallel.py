@@ -19,14 +19,13 @@ from __future__ import annotations
 
 import concurrent.futures
 import os
-import statistics
 import time
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 from .. import schemas
 from ..diamonds import DiamondHarness
-from ..diamonds.expeditions import Expedition, ExpeditionOutcome
+from ..diamonds.expeditions import ExpeditionOutcome
 from ..diamonds.d1_opportunity import (
     OpportunityNegativeTail,
     OpportunityPositiveTail,

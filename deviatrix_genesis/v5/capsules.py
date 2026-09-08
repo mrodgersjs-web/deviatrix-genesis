@@ -49,7 +49,7 @@ class FailureCapsule:
 
     def replay(self) -> dict[str, Any]:
         """Replay the failure deterministically."""
-        from ..mathexec.executor import pass_a_symbolic, pass_b_numerical, pass_c_adversarial
+        from ..mathexec.executor import pass_a_symbolic
         from .. import schemas
 
         claim = schemas.MathClaim(

@@ -36,26 +36,26 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from deviatrix_genesis import schemas
-from deviatrix_genesis.conductors import DeviatrixConductor
-from deviatrix_genesis.diamonds import DiamondHarness
-from deviatrix_genesis.diamonds.d1_opportunity import (
+from deviatrix_genesis import schemas  # noqa: E402
+from deviatrix_genesis.conductors import DeviatrixConductor  # noqa: E402
+from deviatrix_genesis.diamonds import DiamondHarness  # noqa: E402
+from deviatrix_genesis.diamonds.d1_opportunity import (  # noqa: E402
     OpportunityNegativeTail,
     OpportunityPositiveTail,
     OpportunityRepairedTail,
 )
-from deviatrix_genesis.diamonds.d2_invention import (
+from deviatrix_genesis.diamonds.d2_invention import (  # noqa: E402
     InventionNegativeTail,
     InventionPositiveTail,
     InventionRepairedTail,
 )
-from deviatrix_genesis.diamonds.d3_proof import (
+from deviatrix_genesis.diamonds.d3_proof import (  # noqa: E402
     ProofNegativeTail,
     ProofPositiveTail,
     ProofRepairedTail,
 )
-from deviatrix_genesis.diamonds.routing import action_for, band_for, is_wall
-from deviatrix_genesis.verifier import IndependentVerifier
+from deviatrix_genesis.diamonds.routing import action_for, band_for, is_wall  # noqa: E402
+from deviatrix_genesis.verifier import IndependentVerifier  # noqa: E402
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -575,14 +575,14 @@ def render_report(per_idea: dict[str, Any]) -> str:
         lines.append(f"     owner department: {idea['owner_dept']}")
         lines.append(f"     90-day action   : {idea['action_90d'][:120]}…")
         lines.append(f"     falsifier       : {idea['falsifier'][:120]}…")
-        lines.append(f"     per-diamond z:")
+        lines.append("     per-diamond z:")
         for d, vals in idea["diamonds"].items():
             lines.append(
                 f"        {d:12s} pos={vals['positive_z']:7.2f}  neg={vals['negative_z']:7.2f}  "
                 f"rep={vals['repaired_z']:7.2f}  band={vals['band']:14s}  "
                 f"verdict={vals['verifier']:8s}"
             )
-        lines.append(f"     sealed hashes   :")
+        lines.append("     sealed hashes   :")
         for k, h in idea["sealed_hashes"].items():
             lines.append(f"        {k:30s}: {h[:16]}…")
         lines.append("")

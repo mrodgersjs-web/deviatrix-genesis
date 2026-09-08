@@ -2,7 +2,7 @@
 
 Run with::
 
-    cd /Users/rig128gb/Projects/deviatrix-genesis
+    cd $HOME/Projects/deviatrix-genesis
     PYTHONPATH=. python3 -m pytest deviatrix_genesis/tests -q
 
 Or directly::
@@ -12,7 +12,6 @@ Or directly::
 
 from __future__ import annotations
 
-import json
 import math
 import random
 import sys
@@ -25,38 +24,38 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-from deviatrix_genesis import schemas
-from deviatrix_genesis.conductors import DeviatrixConductor, EXPECTED_RUN_TOTALS
-from deviatrix_genesis.diamonds import (
+from deviatrix_genesis import schemas  # noqa: E402
+from deviatrix_genesis.conductors import DeviatrixConductor, EXPECTED_RUN_TOTALS  # noqa: E402
+from deviatrix_genesis.diamonds import (  # noqa: E402
     FAIL_ROUTES,
     DiamondHarness,
     apply_fail_route,
     dispatch_skill,
 )
-from deviatrix_genesis.diamonds.d1_opportunity import (
+from deviatrix_genesis.diamonds.d1_opportunity import (  # noqa: E402
     OpportunityNegativeTail,
     OpportunityPositiveTail,
     OpportunityRepairedTail,
 )
-from deviatrix_genesis.diamonds.d2_invention import (
+from deviatrix_genesis.diamonds.d2_invention import (  # noqa: E402
     InventionNegativeTail,
     InventionPositiveTail,
     InventionRepairedTail,
 )
-from deviatrix_genesis.diamonds.d3_proof import (
+from deviatrix_genesis.diamonds.d3_proof import (  # noqa: E402
     ProofNegativeTail,
     ProofPositiveTail,
     ProofRepairedTail,
 )
-from deviatrix_genesis.diamonds.routing import (
+from deviatrix_genesis.diamonds.routing import (  # noqa: E402
     action_for,
     band_for,
     is_wall,
     POSITIVE_BANDS,
     NEGATIVE_BANDS,
 )
-from deviatrix_genesis.iqrsqpi import IQRSQPIConductor
-from deviatrix_genesis.mathexec import (
+from deviatrix_genesis.iqrsqpi import IQRSQPIConductor  # noqa: E402
+from deviatrix_genesis.mathexec import (  # noqa: E402
     QN_CONSTANT,
     MAD_CONSTANT,
     alternate_corpus_z,
@@ -69,13 +68,13 @@ from deviatrix_genesis.mathexec import (
     qn_z,
     robust_madz,
 )
-from deviatrix_genesis.mathexec.executor import (
+from deviatrix_genesis.mathexec.executor import (  # noqa: E402
     pass_a_symbolic,
     pass_b_numerical,
     pass_c_adversarial,
     compute_deviation,
 )
-from deviatrix_genesis.sympy_mcp import (
+from deviatrix_genesis.sympy_mcp import (  # noqa: E402
     tool_adversarial_substitution,
     tool_check_assumptions,
     tool_check_inequality,
@@ -87,7 +86,7 @@ from deviatrix_genesis.sympy_mcp import (
     tool_solve,
     capabilities,
 )
-from deviatrix_genesis.verifier import IndependentVerifier
+from deviatrix_genesis.verifier import IndependentVerifier  # noqa: E402
 
 
 # ────────────────────────────────────────────────────────────────────

@@ -3,6 +3,8 @@
 > The Deviatrix Genesis Idea Foundry — 3 diamonds × 3 expeditions × 7 IQRSQPI stages,
 > with SymPy MCP as the mathematical transmission and independent robust
 > statistics as the telemetry.
+[![CI](https://img.shields.io/github/actions/workflow/status/mrodgersjs-web/deviatrix-genesis/ci.yml?branch=main)](https://github.com/mrodgersjs-web/deviatrix-genesis/actions/workflows/ci.yml)
+
 
 This package is the implementation of the doctrine in
 `Deviatrix Genesis Idea Foundry.md`. It refuses to let the LLM fake
@@ -55,7 +57,7 @@ MUTATE / ESCALATE. ±30σ is the wall, not the floor.
 ## Install + run
 
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m deviatrix_genesis run-full --formula "x**2 + 3*x + 1" --pop-size 500 --out ./proofs
 ```
 
@@ -104,7 +106,7 @@ Each packet is SHA-256 sealed; each verdict is signed by the verifier.
 ## Tests
 
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v
 ```
 
@@ -198,7 +200,7 @@ expected to *emit* MathClaims; this package validates and routes them.
 ## Doctrine reference
 
 The original spec is at
-`/Users/rig128gb/Downloads/Deviatrix Genesis Idea Foundry.md`. The
+`$HOME/Downloads/Deviatrix Genesis Idea Foundry.md`. The
 package is line-by-line conformant to the doctrine:
 
 - §1 *SymPy MCP's exact role*: enforced by `schemas.MathClaim` (the

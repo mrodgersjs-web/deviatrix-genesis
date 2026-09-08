@@ -23,7 +23,7 @@ import json
 from typing import Any
 
 from .run_history import RunHistory
-from .telemetry import EventBus, get_bus
+from .telemetry import get_bus
 
 __all__ = ["create_app"]
 

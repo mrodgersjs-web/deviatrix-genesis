@@ -22,11 +22,9 @@ and inverting to find the input that lands at the target.
 from __future__ import annotations
 
 import json
-import re
 import statistics
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 __all__ = ["CalibrationRecord", "calibrate", "propose_calibrated_scores"]
 

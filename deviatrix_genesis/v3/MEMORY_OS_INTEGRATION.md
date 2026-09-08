@@ -112,7 +112,7 @@ so Mike can review before promoting to `active`.
 ## Run it
 
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 
 # Full pipeline (no Memory OS write)
 PYTHONPATH=. python3 -m deviatrix_genesis.v3.pipeline \

@@ -12,13 +12,11 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from deviatrix_genesis.v3.corpus_loader import (
+from deviatrix_genesis.v3.corpus_loader import (  # noqa: E402
     build_reference_population,
     load_corpus,
 )
-from deviatrix_genesis.v4.iterative import run_iterative
-from deviatrix_genesis.v4.parallel import run_idea_parallel
-from deviatrix_genesis.v4.formula_emitter import emit_formulas
+from deviatrix_genesis.v4.iterative import run_iterative  # noqa: E402
 
 
 def main() -> int:

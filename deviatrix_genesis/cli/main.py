@@ -64,7 +64,6 @@ def cmd_run_expedition(args: argparse.Namespace) -> int:
     from ..diamonds import DiamondHarness
     from ..diamonds.expeditions import ExpeditionOutcome
     from ..iqrsqpi import IQRSQPIConductor
-    from ..verifier import IndependentVerifier
 
     c = DeviatrixConductor(
         seed=args.seed,

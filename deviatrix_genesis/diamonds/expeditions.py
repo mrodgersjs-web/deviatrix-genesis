@@ -20,7 +20,6 @@ through Pass A → Pass B → Pass C and seals a proof packet.
 from __future__ import annotations
 
 import abc
-import time
 import uuid
 from dataclasses import dataclass, field
 from typing import Any

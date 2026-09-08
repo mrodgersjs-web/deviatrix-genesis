@@ -39,12 +39,9 @@ Output: ``rig_gtm_proofs_v2/REPORT.md`` and the sealed packet JSON.
 
 from __future__ import annotations
 
-import json
-import math
 import random
-import re
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -53,26 +50,26 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from deviatrix_genesis import schemas
-from deviatrix_genesis.diamonds import DiamondHarness
-from deviatrix_genesis.diamonds.d1_opportunity import (
+from deviatrix_genesis import schemas  # noqa: E402
+from deviatrix_genesis.diamonds import DiamondHarness  # noqa: E402
+from deviatrix_genesis.diamonds.d1_opportunity import (  # noqa: E402
     OpportunityNegativeTail,
     OpportunityPositiveTail,
     OpportunityRepairedTail,
 )
-from deviatrix_genesis.diamonds.d2_invention import (
+from deviatrix_genesis.diamonds.d2_invention import (  # noqa: E402
     InventionNegativeTail,
     InventionPositiveTail,
     InventionRepairedTail,
 )
-from deviatrix_genesis.diamonds.d3_proof import (
+from deviatrix_genesis.diamonds.d3_proof import (  # noqa: E402
     ProofNegativeTail,
     ProofPositiveTail,
     ProofRepairedTail,
 )
-from deviatrix_genesis.diamonds.routing import action_for, band_for, is_wall
-from deviatrix_genesis.mathexec import hash_population, robust_madz
-from deviatrix_genesis.verifier import IndependentVerifier, VerifierReport
+from deviatrix_genesis.diamonds.routing import action_for, band_for, is_wall  # noqa: E402
+from deviatrix_genesis.mathexec import hash_population, robust_madz  # noqa: E402
+from deviatrix_genesis.verifier import IndependentVerifier  # noqa: E402
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -500,22 +497,6 @@ IDEAS_V2: list[GTM_idea_v2] = [
 # ────────────────────────────────────────────────────────────────────
 
 
-def known_population(n: int = 1500, *, seed: int = 2026, **kwargs) -> list[float]:
-    """Default known-GTM reference population. Overridable."""
-    rng = random.Random(seed)
-    out: list[float] = []
-    for _ in range(n):
-        u = rng.random()
-        if u < 0.85:
-            out.append(rng.gauss(0.05, 0.4))
-        elif u < 0.97:
-            out.append(rng.gauss(1.5, 0.8))
-        else:
-            out.append(rng.gauss(4.0, 1.5))
-    for _ in range(80):
-        out.append(rng.gauss(0.05, 0.4))
-    out.sort()
-    return out
 
 
 def archetype_only_population(seed: int = 2026, n: int = 1000, **kwargs) -> list[float]:

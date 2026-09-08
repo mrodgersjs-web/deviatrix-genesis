@@ -13,7 +13,6 @@ The full pipeline is exercised by ``test_pipeline_smoke``.
 
 from __future__ import annotations
 
-import os
 import statistics
 import sys
 import unittest
@@ -24,23 +23,19 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-from deviatrix_genesis.v3.collision import fuse_survivors, HybridIdea
-from deviatrix_genesis.v3.corpus_loader import (
+from deviatrix_genesis.v3.collision import fuse_survivors, HybridIdea  # noqa: E402
+from deviatrix_genesis.v3.corpus_loader import (  # noqa: E402
     KNOWN_MECHANISM_PATTERNS,
     build_known_archetype_population,
     build_reference_population,
     load_corpus,
-    load_gtm_substrate_corpus,
-    load_jake_studio_corpus,
     load_memory_os_corpus,
-    load_prior_run_corpus,
     score_corpus_entry,
 )
-from deviatrix_genesis.v3.proposer import (
+from deviatrix_genesis.v3.proposer import (  # noqa: E402
     GTMIdea,
     TEMPLATES,
     propose_from_brief,
-    render_idea,
 )
 
 

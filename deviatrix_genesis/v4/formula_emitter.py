@@ -30,9 +30,7 @@ from __future__ import annotations
 import random
 import re
 from dataclasses import dataclass, field
-from typing import Any
 
-from ..v3.corpus_loader import KNOWN_MECHANISM_PATTERNS
 
 __all__ = ["EmittedFormula", "emit_formulas", "PRIMITIVE_VOCAB", "OPERATOR_VOCAB"]
 

@@ -9,27 +9,27 @@ The prime agent (`deviatrix_genesis/v5/prime_agent.py`) wraps the full pipeline 
 ### Quick Start
 ```bash
 # Run a single brief
-/Users/rig128gb/bin/deviatrix-prime run --brief "GTM strategy for AI tools"
+$HOME/bin/deviatrix-prime run --brief "GTM strategy for AI tools"
 
 # Run autonomous (from Memory OS)
-/Users/rig128gb/bin/deviatrix-prime autonomous
+$HOME/bin/deviatrix-prime autonomous
 
 # Check status
-/Users/rig128gb/bin/deviatrix-prime status
+$HOME/bin/deviatrix-prime status
 
 # View run history
-/Users/rig128gb/bin/deviatrix-prime history --trends
+$HOME/bin/deviatrix-prime history --trends
 
 # Launch web dashboard
-/Users/rig128gb/bin/deviatrix-prime web --port 8080
+$HOME/bin/deviatrix-prime web --port 8080
 
 # Run tests
-/Users/rig128gb/bin/deviatrix-prime test
+$HOME/bin/deviatrix-prime test
 ```
 
 ### Full CLI
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m deviatrix_genesis.v5 <command>
 ```
 
@@ -51,7 +51,7 @@ v5 (1000x):  31 modules — DAG, telemetry, convergence, fusion, streaming, dive
 
 ## Verification
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v
 ```
 
@@ -59,8 +59,8 @@ PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix deviatri
 
 ## Jake L8 Job
 - **Job ID:** `run-deviatrix`
-- **Goal harness:** `/Users/rig128gb/.jake/goal-harnesses/deviatrix-prime.md`
-- **CLI wrapper:** `/Users/rig128gb/bin/deviatrix-prime`
+- **Goal harness:** `$HOME/.jake/goal-harnesses/deviatrix-prime.md`
+- **CLI wrapper:** `$HOME/bin/deviatrix-prime`
 
 ## Gate-D Boundary
 Local pipeline runs are allowed. Memory OS writes are allowed (idempotent). Public exposure of results requires Mike approval.

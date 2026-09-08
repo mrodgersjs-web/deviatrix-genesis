@@ -43,8 +43,8 @@ class ReportExporter:
         if q:
             lines.extend([
                 "## Quality Metrics\n",
-                f"| Metric | Value |",
-                f"|--------|-------|",
+                "| Metric | Value |",
+                "|--------|-------|",
                 f"| Expeditions | {q.get('total_expeditions', 0)} |",
                 f"| Pass rate | {q.get('pass_rate_pct', 0)}% |",
                 f"| Wall breaches | {q.get('wall_breaches', 0)} |",

@@ -22,7 +22,7 @@ from typing import Any
 
 from .convergence import AdaptiveConvergence
 from .dashboard import Dashboard
-from .fusion import CrossBriefCandidate, CrossBriefFusion
+from .fusion import CrossBriefFusion
 from .memory_loop import ResilientMemoryLoop
 from .telemetry import EventBus, TelemetryCollector, get_bus
 
@@ -234,7 +234,7 @@ def run_v5_pipeline(
 
     # ── load substrate ──────────────────────────────────────────────
     from ..v3.corpus_loader import load_corpus
-    from ..v3.proposer import propose_from_brief, GTMIdea
+    from ..v3.proposer import GTMIdea
     from ..v3.collision import fuse_survivors
     from ..verifier import IndependentVerifier
     from ..v4.embeddings import build_embedding_index, score_with_embeddings

@@ -16,36 +16,19 @@ import io
 import json
 import re
 import tokenize
+from typing import Any
 import sympy
 from sympy import (
     Eq,
     Function,
-    Integral,
-    LambertW,
-    Matrix,
-    Piecewise,
-    Poly,
     Pow,
     Rational,
-    S,
     Symbol,
-    ceiling,
-    cos,
-    cot,
     diff,
-    exp,
-    floor,
     integrate,
     lambdify,
-    log,
-    oo,
-    sign,
     simplify,
-    sin,
     solve,
-    sqrt,
-    sympify,
-    tan,
     together,
     trigsimp,
 )

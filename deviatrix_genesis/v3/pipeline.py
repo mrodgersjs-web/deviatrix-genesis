@@ -24,13 +24,11 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
-from .collision import fuse_survivors
 from .corpus_loader import load_corpus
-from .ensemble import EnsembleResult, run_ensemble
+from .ensemble import run_ensemble
 from .memory_os import MemoryOSAdapter
 from .proposer import propose_from_brief
 

@@ -22,7 +22,6 @@ This matches the doctrine's run totals.
 from __future__ import annotations
 
 import json
-import os
 import random
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -46,7 +45,7 @@ from ..diamonds.d3_proof import (
     ProofRepairedTail,
 )
 from ..diamonds.expeditions import ExpeditionOutcome
-from ..diamonds.routing import action_for, band_for, is_wall
+from ..diamonds.routing import action_for, is_wall
 from ..iqrsqpi import IQRSQPIConductor
 from ..verifier import IndependentVerifier, VerifierReport
 

@@ -22,7 +22,7 @@ Mike's promotion to `active` is the human_approved side.
 from __future__ import annotations
 
 import sqlite3
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -63,7 +63,6 @@ class MemoryDrivenLoop:
         """Run the memory-driven loop."""
         brief = self.build_brief()
         from ..v3.corpus_loader import (
-            build_known_archetype_population,
             build_reference_population,
             load_corpus,
         )

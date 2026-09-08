@@ -7,11 +7,9 @@ comparison of wall-clock time, survivor quality, and convergence speed.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 import time
-from dataclasses import asdict, dataclass
-from typing import Any
+from dataclasses import dataclass
 
 __all__ = ["BenchmarkResult", "run_benchmark", "render_comparison"]
 

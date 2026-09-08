@@ -13,7 +13,6 @@ Pass A → Pass B → Pass C → EmpiricalProof
 from __future__ import annotations
 
 import statistics
-from dataclasses import asdict
 from typing import Any, Sequence
 
 from .. import schemas

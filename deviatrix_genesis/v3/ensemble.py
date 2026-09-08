@@ -12,7 +12,7 @@ the per-packet level.
 from __future__ import annotations
 
 import statistics
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
 from ..rig_gtm_run_v2 import IDEAS_V2 as _V2_IDEAS
@@ -125,7 +125,6 @@ def run_ensemble(
         # Reconstruct GTMIdea objects from the survivors' first-seed data
         survivor_ideas: list[GTMIdea] = []
         survivor_names = {s["name"] for s in survivors}
-        survivor_lookup = {s["name"]: s for s in survivors}
         for idea in ideas:
             if idea.name in survivor_names:
                 survivor_ideas.append(idea)

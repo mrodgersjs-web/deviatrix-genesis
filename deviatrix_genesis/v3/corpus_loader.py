@@ -34,15 +34,12 @@ preferred one.
 from __future__ import annotations
 
 import json
-import os
 import re
 import sqlite3
 import statistics
-import sys
-from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 __all__ = [
     "CorpusEntry",

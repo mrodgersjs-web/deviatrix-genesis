@@ -10,8 +10,6 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from ..v4.embeddings import (
-    EmbeddingIndex,
-    HashedEmbedding,
     build_embedding_index,
     cosine_similarity,
 )

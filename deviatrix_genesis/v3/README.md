@@ -18,7 +18,7 @@ for the RIG Memory OS round-trip.
 ## Run it
 
 ```bash
-cd /Users/rig128gb/Projects/deviatrix-genesis
+cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m deviatrix_genesis.v3.pipeline \
     --brief "Operator-first GTM with doctrine-yield primitives and independent verification" \
     --n-seeds 3 --out ./v3_proofs
