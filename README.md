@@ -1,5 +1,7 @@
 # Deviatrix Genesis
 
+<p align="center"><img src="assets/deviatrix-genesis-hero.png" alt="Deviatrix Genesis idea foundry architecture" width="100%" /></p>
+
 > The Deviatrix Genesis Idea Foundry — 3 diamonds × 3 expeditions × 7 IQRSQPI stages,
 > with SymPy MCP as the mathematical transmission and independent robust
 > statistics as the telemetry.
