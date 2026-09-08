@@ -13,3 +13,6 @@ credentials/
 
 # RIG Memory OS
 rig-memory-os/app/src/rig_memory_os/__pycache__/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/

@@ -72,6 +72,24 @@ deviatrix sympy-check     # sympy_mcp surface
 deviatrix sympy-serve     # launch the MCP server
 ```
 
+## Claude Desktop stdio
+
+Install `uv`, clone this repository, and replace the example `cwd` with that clone's path. `uv` supplies the MCP and SymPy dependencies for the server process.
+
+```json
+{
+  "mcpServers": {
+    "deviatrix-sympy": {
+      "command": "uv",
+      "args": ["run", "--with", "mcp[cli]<2", "--with", "sympy", "python", "-m", "deviatrix_genesis.sympy_mcp"],
+      "cwd": "/path/to/deviatrix-genesis"
+    }
+  }
+}
+```
+
+This launches `uv run --with "mcp[cli]<2" --with sympy python -m deviatrix_genesis.sympy_mcp` over stdio.
+
 End-to-end smoke:
 
 ```bash

@@ -12,13 +12,10 @@ is present, :func:`start_server` launches a proper MCP server. When it is
 absent, :data:`TOOL_NAMES` and :data:`RESOURCE_URIS` are still exported
 so smoke checks can verify the surface.
 
-Install the optional MCP dependency::
+Run the server from a repository clone with ``uv``, which supplies the
+optional MCP and SymPy dependencies::
 
-    pip install "deviatrix-genesis[mcp]"
-
-Then start the server::
-
-    python -m deviatrix_genesis.sympy_mcp
+    uv run --with "mcp[cli]<2" --with sympy python -m deviatrix_genesis.sympy_mcp
 
 Auth boundary
 -------------
