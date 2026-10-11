@@ -33,7 +33,7 @@ that terminates a run is the independent verifier.
 | **v3**           | `deviatrix_genesis.v3`              | Corpus loader, proposer, collision engine, ensemble, calibration, Memory OS adapter |
 | **v4**           | `deviatrix_genesis.v4`              | Async parallel runner, hashed embeddings, formula emitter, iterative rounds, memory export |
 | **v5**           | `deviatrix_genesis.v5`              | Async DAG executor, structured telemetry, adaptive convergence, cross-brief fusion, resilient Memory OS loop, live dashboard, benchmark harness |
-| Tests            | `deviatrix_genesis.{v3,v4,v5}.tests` | **112 tests** across all 4 versions |
+| Tests            | `deviatrix_genesis.{v3,v4,v5}.tests` | **151 tests** across all 4 versions |
 | Smoke            | `deviatrix_genesis.smoke`           | End-to-end synthetic-idea run |
 
 ## The doctrine in one paragraph
@@ -130,14 +130,14 @@ cd $HOME/Projects/deviatrix-genesis
 PYTHONPATH=. python3 -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v
 ```
 
-112 tests across all 4 versions:
+151 tests across all 4 versions (the count the command above prints as `Ran 151 tests`; CI fails if this line drifts from the suite):
 
 | Suite | Tests | Covers |
 |-------|-------|--------|
-| v1 (core) | 60 | sympy_mcp, mathexec, executor, harness, diamonds, IQRSQPI, routing, verifier, conductor, schemas, CLI |
+| v1 (core) | 61 | sympy_mcp, mathexec, executor, harness, diamonds, IQRSQPI, routing, verifier, conductor, schemas, CLI |
 | v3 | 19 | corpus loader, proposer, collision, ensemble, calibration, Memory OS adapter, pipeline |
 | v4 | 3 | memory export idempotency, candidate blocking, deterministic IDs |
-| v5 | 30 | DAG (order, fan-out, errors, skip, timing), telemetry (emit, filter, unsubscribe, metrics), convergence (no-new, plateau, max-rounds, improving, reset), fusion (empty, single, complementary, overlapping), memory loop (brief builder, circuit breaker), dashboard (render, sparkline, subscribe), pipeline smoke |
+| v5 | 68 | DAG (order, fan-out, errors, skip, timing), telemetry (emit, filter, unsubscribe, metrics), convergence (no-new, plateau, max-rounds, improving, reset), fusion (empty, single, complementary, overlapping), memory loop (brief builder, circuit breaker), dashboard (render, sparkline, subscribe), pipeline smoke, multi-brief, diversity, Pareto, provenance and provenance audit, anomaly, exports, healer, hypotheses, VDJ, snapshots, certification, capsules, canaries, proof stream, axioms, tolerance, contention |
 
 ## v5 Pipeline
 
@@ -245,3 +245,7 @@ package is line-by-line conformant to the doctrine:
 ## License
 
 This is a doctrine artifact, built for the Deviatrix Genesis program.
+
+## Security
+
+Report vulnerabilities privately; see [SECURITY.md](SECURITY.md).

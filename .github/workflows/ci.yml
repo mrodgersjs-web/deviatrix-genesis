@@ -29,7 +29,15 @@ jobs:
 
     - name: Run test suite
       run: |
-        PYTHONPATH=. python -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v
+        PYTHONPATH=. python -m unittest deviatrix_genesis.tests.test_deviatrix deviatrix_genesis.v3.tests.test_v3 deviatrix_genesis.v4.tests.test_memory_export deviatrix_genesis.v5.tests.test_v5 -v 2>&1 | tee unittest.log
+        test "${PIPESTATUS[0]}" -eq 0
+
+    - name: README test count matches the suite
+      run: |
+        ran=$(grep -oE '^Ran [0-9]+ tests' unittest.log | grep -oE '[0-9]+')
+        echo "suite ran $ran tests"
+        grep -q "\*\*${ran} tests\*\* across all 4 versions" README.md || { echo "README test count does not match suite ($ran)"; exit 1; }
+        grep -q "^${ran} tests across all 4 versions" README.md || { echo "README Tests section count does not match suite ($ran)"; exit 1; }
 
   lint:
     runs-on: ubuntu-latest
