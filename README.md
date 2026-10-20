@@ -5,7 +5,7 @@ ideas, checks every claim it makes with symbolic math and statistics, and ends t
 with a computed pass/fail verdict instead of prose. For teams who want idea work they
 can audit with numbers.
 
-[![CI](https://github.com/mrodgersjs-web/deviatrix-genesis/actions/workflows/ci.yml/badge.svg)](https://github.com/mrodgersjs-web/deviatrix-genesis/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/mrodgersjs-web/deviatrix-genesis/ci.yml?branch=main&label=CI)](https://github.com/mrodgersjs-web/deviatrix-genesis/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 
