@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- This commit adds .github/CODEOWNERS, which assigns @mrodgersjs-web as the code owner for every file in the repo.
+
 - This commit adds a ruff per-file ignore for E402 in `examples/*.py`, which insert the repo root on `sys.path` before importing, so `ruff check .` passes on the whole tree.
 
 ## [0.2.0] - 2026-10-19
