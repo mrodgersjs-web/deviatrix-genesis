@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `.github/workflows/ci.yml` runs the real suite: `pip install -e '.[dev]'`,
+  ruff and `pytest` on Python 3.10-3.13, then executes the shipped example;
+  the benchmark job stays main-only and waits for the test job.
+  `deviatrix_genesis/tests/test_ci_workflow.py` asserts the workflow keeps
+  those steps (4 tests).
+
 - README rewritten in plain English: what the pipeline does, who it is for, and one
   runnable example; internal jargon replaced with plain terms.
 - Tests now run with a single command from a clean install (`pip install -e '.[dev]'
