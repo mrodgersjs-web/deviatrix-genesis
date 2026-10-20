@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deviatrix-genesis"
+version = "0.2.0"
+description = "An idea-exploration pipeline that checks every claim it generates with symbolic math and robust statistics, and ends each run in a computed verdict."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Mike Rodgers" }]
+keywords = [
+  "idea-generation",
+  "symbolic-math",
+  "statistics",
+  "verification",
+  "sympy",
+  "pipeline",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+dependencies = ["sympy>=1.12"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.4"]
+
+[project.scripts]
+deviatrix = "deviatrix_genesis.cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/mrodgersjs-web/deviatrix-genesis"
+Repository = "https://github.com/mrodgersjs-web/deviatrix-genesis"
+Issues = "https://github.com/mrodgersjs-web/deviatrix-genesis/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["deviatrix_genesis"]
+
+[tool.pytest.ini_options]
+testpaths = ["deviatrix_genesis"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
+
+[tool.coverage.run]
+source = ["deviatrix_genesis"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:"]
